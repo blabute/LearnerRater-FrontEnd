@@ -26,6 +26,7 @@
   "author": "scrum-a-holics",
   "license": "ISC",
   "dependencies": {
+    "classnames": "^2.2.5",
     "object-assign": "4.1.0",
     "react": "15.5.4",
     "react-dom": "15.5.4",
