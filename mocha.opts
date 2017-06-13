@@ -1,0 +1,5 @@
+--compilers js:babel-core/register
+--require mocha-setup
+--recursive
+--reporter dot
+src/**/__tests__/*.js
