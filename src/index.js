@@ -9,6 +9,9 @@ import Root from './components/Root';
 import configureStore from './store/configureStore';
 import './styles/styles.scss'; // Yep, that's right. You can import SASS/CSS files too! Webpack will run the associated loader and plug this into the page.
 import { syncHistoryWithStore } from 'react-router-redux';
+import AddCoursesPage from './components/AddCoursesPage';
+
+//import {Provider} from 'react-redux';
 
 const store = configureStore();
 
@@ -17,9 +20,14 @@ const history = syncHistoryWithStore(browserHistory, store);
 
 
 render(
+  //<div>
   <AppContainer>
     <Root store={store} history={history} />
   </AppContainer>,
+  //<Provider store={store}>
+    //<AddCoursesPage />
+  //</Provider>
+  //</div>,
   document.getElementById('app')
 );
 
