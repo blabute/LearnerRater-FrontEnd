@@ -7,6 +7,6 @@ describe('<HomePage />', () => {
 
   it('renders h1 with title of page', () => {
     const homePage = shallow(<HomePage />);
-    expect(homePage).to.have.text('Learner Rater Testing');
+    expect(homePage).to.have.text('Learner Rater');
   });
 });
