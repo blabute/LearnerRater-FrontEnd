@@ -1,20 +1,21 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import * as courseActions from '../actions/courseActions';
 import {bindActionCreators} from 'redux';
 import * as categories from '../api/categories';
+import * as ratings from '../api/ratings';
 
 class AddCoursesPage extends React.Component{
   constructor (props, context){
     super(props, context);
     this.state={
-      course:{category:"",
+      course:{category:"React",
               title:"",
               author:"",
               description:"",
               website:"",
               url:"",
-              rating:"",
+              rating:"1",
               comments:""}
     };
     //this.onValueChange=this.onValueChange.bind(this);
@@ -163,11 +164,14 @@ class AddCoursesPage extends React.Component{
       value={this.state.course.url}
       />
       <p></p>
-      Rating :<input type="text" name="rating"
-      onChange={this.onRatingChange}
-      value={this.state.course.rating}
-      />
-      <p></p>
+      Rating :
+      <select value={this.state.course.rating} onChange={this.onRatingChange}>
+        {ratings.items.map((item) =>
+            <option value={item.rate}>{item.rate}</option>
+            )}
+      </select>
+
+     <p></p>
       Comments :<input type="textarea" name="comment"
       onChange={this.onCommentChange}
       value={this.state.course.comment}
@@ -183,7 +187,7 @@ class AddCoursesPage extends React.Component{
   }
 }
 
-function mapStateToProps (state, ownProps){
+function mapStateToProps (state){
   return {
     courses: state.courses
   };
