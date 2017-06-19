@@ -1,0 +1,114 @@
+
+
+//-----------------------------------------------------------------------------
+//  ^^ FORM ELEMENTS
+//-----------------------------------------------------------------------------
+
+
+  input[type="text"],
+  select,
+  textarea {
+
+    height: 36px;
+    padding: 5px;
+    box-sizing: border-box;
+    min-width: 300px;
+    border: 1px solid #ccccc8;
+    background: rgba(0,0,0,.05);
+    border-radius: 3px;
+
+    &::placeholder { color: #ccc; }
+
+    &:active,
+    &:focus { background-color: #d6f4fe;}
+
+  }
+
+  input[type="text"] {
+
+
+
+  }
+
+
+  select {
+
+
+
+  }
+
+  textarea {
+
+    max-width: 400px;
+    max-height: 200px;
+    min-height: 60px;
+
+  }
+
+
+
+  .qbox {
+
+    display: flex;
+    margin-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+
+    .question {
+
+      display: flex;
+      flex: 1;
+      align-self: center;
+      justify-content: flex-end;
+      margin-right: 14px;
+
+
+    }
+
+    .answer {
+
+      flex: 1.25;
+
+    }
+
+    .divider {
+
+      border-top: 1px solid #ccc;
+      height: 10px;
+      margin: 10px auto 0;
+      flex: 1;
+    }
+
+
+
+    label {
+
+      color: #555;
+      text-align: right;
+
+    }
+
+
+    input,
+    textarea,
+    select {
+
+    }
+
+
+    button.btn {
+      border: none;
+      border-radius: 3px;
+      background-color: #afafb4;
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      font-size: 14px;
+
+
+
+    }
+
+
+  }
