@@ -6,22 +6,20 @@ import PropTypes from 'prop-types';
 
 const ReviewForm = props => {
 
-  const { rating } = props;
+  const { onStarClick } = props;
 
   return (
     <div>
       <Field name="userName" component={renderField} type="text" label="Username" />
-      <StarRatingComponent
-        name="rating"
-        value={rating}
-      />
+      <StarRatingComponent name="rating" onStarClick={onStarClick} />
       <Field name="comment" component={renderField} type="text" label="Comment" />
     </div>
   );
 };
 
 ReviewForm.propTypes = {
-  rating: PropTypes.number
+  rating: PropTypes.number,
+  onStarClick: PropTypes.func
 };
 
 export default ReviewForm;
