@@ -1,8 +1,8 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import renderField from '../common/renderField';
-import StarRatingComponent from '../StarRatingComponent';
 import PropTypes from 'prop-types';
+import renderStarRatingComponent from '../common/renderStarRatingComponent';
 
 const ReviewForm = props => {
 
@@ -11,15 +11,14 @@ const ReviewForm = props => {
   return (
     <div>
       <Field name="userName" component={renderField} type="text" label="Username" />
-      <StarRatingComponent name="rating" onStarClick={onStarClick} />
+      <Field name="rating" component={renderStarRatingComponent} onStarClick={onStarClick}/>
       <Field name="comment" component={renderField} type="text" label="Comment" />
     </div>
   );
 };
 
 ReviewForm.propTypes = {
-  rating: PropTypes.number,
-  onStarClick: PropTypes.func
+  onStarClick: PropTypes.func.isRequired
 };
 
 export default ReviewForm;
