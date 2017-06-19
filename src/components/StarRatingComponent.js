@@ -5,26 +5,6 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 class StarRatingComponent extends Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    value: PropTypes.number,
-    editing: PropTypes.bool,
-    starCount: PropTypes.number,
-    starColor: PropTypes.string,
-    onStarClick: PropTypes.func,
-    renderStarIcon: PropTypes.func,
-    renderStarIconHalf: PropTypes.fun,
-    className: PropTypes.string,
-    emptyStarColor: PropTypes.string
-  };
-
-  static defaultProps = {
-    starCount: 5,
-    value: 0,
-    editing: true,
-    starColor: '#ffb400',
-    emptyStarColor: '#333'
-  };
 
   constructor(props) {
     super();
@@ -144,5 +124,26 @@ class StarRatingComponent extends Component {
     );
   }
 }
+
+StarRatingComponent.propTypes = {
+  name: PropTypes.string.isRequired,
+  value: PropTypes.number,
+  editing: PropTypes.bool,
+  starCount: PropTypes.number,
+  starColor: PropTypes.string,
+  onStarClick: PropTypes.func,
+  renderStarIcon: PropTypes.func,
+  renderStarIconHalf: PropTypes.fun,
+  className: PropTypes.string,
+  emptyStarColor: PropTypes.string
+};
+
+StarRatingComponent.defaultProps = {
+  starCount: 5,
+  value: 0,
+  editing: true,
+  starColor: '#ffb400',
+  emptyStarColor: '#333'
+};
 
 export default StarRatingComponent;
