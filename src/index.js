@@ -9,11 +9,13 @@ import Root from './components/Root';
 import configureStore from './store/configureStore';
 import { syncHistoryWithStore } from 'react-router-redux';
 import AddCourseBtn from './components/AddCourseBtn';
+import {loadResourceSubjects} from './actions/resourceSubjectActions';
 
 import '../mockups/css/master.scss';
 
 
 const store = configureStore();
+store.dispatch(loadResourceSubjects());
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
