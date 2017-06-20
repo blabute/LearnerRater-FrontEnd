@@ -133,7 +133,7 @@ StarRatingComponent.propTypes = {
   starColor: PropTypes.string,
   onStarClick: PropTypes.func,
   renderStarIcon: PropTypes.func,
-  renderStarIconHalf: PropTypes.fun,
+  renderStarIconHalf: PropTypes.func,
   className: PropTypes.string,
   emptyStarColor: PropTypes.string
 };

@@ -11,7 +11,7 @@ const ReviewForm = props => {
   return (
     <div>
       <Field name="userName" component={renderField} type="text" label="Username" />
-      <Field name="rating" component={renderStarRatingComponent} onStarClick={onStarClick}/>
+      <Field name="rating" component={renderStarRatingComponent} label="Rating" onStarClick={onStarClick}/>
       <Field name="comment" component={renderField} type="text" label="Comment" />
     </div>
   );

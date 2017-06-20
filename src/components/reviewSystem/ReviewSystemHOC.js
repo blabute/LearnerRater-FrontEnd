@@ -11,11 +11,26 @@ class ReviewSystemHOC extends React.Component {
     this.state = {
       isOverlay: false
     };
+
     this.onStarClick = this.onStarClick.bind(this);
+    this.onSubmitClick = this.onSubmitClick.bind(this);
+    this.onCancelClick = this.onCancelClick.bind(this);
   }
 
   onStarClick(nextValue, prevValue, name) {
     this.props.change(name, nextValue);
+  }
+
+  onSubmitClick() {
+    const { reset } = this.props;
+
+    return reset();
+  }
+
+  onCancelClick() {
+    const { reset } = this.props;
+
+    return reset();
   }
 
   render() {
@@ -23,15 +38,17 @@ class ReviewSystemHOC extends React.Component {
       <form>
         <h3>Add Review</h3>
         <ReviewForm onStarClick={this.onStarClick}/>
-        <button type="button">Submit</button>
-        <button type="button">Cancel</button>
+        <button type="button" onClick={this.onSubmitClick}>Submit</button>
+        <button type="button" onClick={this.onCancelClick}>Cancel</button>
       </form>
     );
   }
 }
 
 ReviewSystemHOC.propTypes = {
-  change: PropTypes.func
+  onStarClick: PropTypes.func,
+  change: PropTypes.func,
+  reset: PropTypes.func
 };
 
 export default reduxForm({
