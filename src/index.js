@@ -7,11 +7,10 @@ import { AppContainer } from 'react-hot-loader';
 import Root from './components/Root';
 
 import configureStore from './store/configureStore';
-import './styles/styles.scss'; // Yep, that's right. You can import SASS/CSS files too! Webpack will run the associated loader and plug this into the page.
 import { syncHistoryWithStore } from 'react-router-redux';
 import AddCourseBtn from './components/AddCourseBtn';
 
-
+import '../mockups/css/master.scss';
 
 
 const store = configureStore();
