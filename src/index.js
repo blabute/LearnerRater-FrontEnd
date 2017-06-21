@@ -12,6 +12,7 @@ import AddCourseBtn from './components/AddCourseBtn';
 import {loadResourceSubjects} from './actions/resourceSubjectActions';
 
 import '../mockups/css/master.scss';
+import './fonts/font-awesome-4.7.0/css/font-awesome.min.css';
 
 
 const store = configureStore();
