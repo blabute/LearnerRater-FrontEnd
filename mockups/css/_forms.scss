@@ -96,19 +96,24 @@
     }
 
 
-    button.btn {
-      border: none;
-      border-radius: 3px;
-      background-color: #afafb4;
-      color: #fff;
-      font-weight: bold;
-      text-transform: uppercase;
-      padding: 8px 14px;
-      font-size: 14px;
 
 
+  }
 
-    }
+
+  button.btn {
+    border: none;
+    border-radius: 3px;
+    background-color: #afafb4;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    font-size: 14px;
+
+    &:hover { background-color: #c4c4c9; }
+
+    &:active { background-color: #6b6b6e; outline: none; }
 
 
   }
