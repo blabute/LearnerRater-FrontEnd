@@ -115,5 +115,9 @@
 
     &:active { background-color: #6b6b6e; outline: none; }
 
+    &--light {
+      background-color: #dadae1;
+      color: #777;
+    }
 
   }

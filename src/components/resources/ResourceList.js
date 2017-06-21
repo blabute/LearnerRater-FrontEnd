@@ -5,7 +5,7 @@ import ResourceListRow from './ResourceListRow';
 const ResourceList = ({resources}) => {
   //debugger;
   return (
-    <div>
+    <div className="resource-list-container">
       {resources.map(resource =>
         <ResourceListRow key={resource.ID} resource={resource}/>
       )}

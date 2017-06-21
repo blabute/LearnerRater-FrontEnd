@@ -143,9 +143,137 @@ section {
 
 
 
+
+
+//------------------------------------------------------------------------------
+// SORT BAR
+//------------------------------------------------------------------------------
+
+  .sort-bar {
+
+    display: flex;
+    background-color: #e6e6e6;
+    color: #96969b;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 14px 60px;
+
+    a {
+
+      display: block;
+      text-decoration: none;
+      color: #96969b;
+
+      &:last-of-type { margin-left: auto; }
+
+    }
+
+  }
+
+
+
+
+
+//------------------------------------------------------------------------------
+// RESOURCE ITEM COMPONENT
+//------------------------------------------------------------------------------
+
+  .resource-list-container {
+
+    padding: 0 60px 25px;
+
+  }
+
+
+  .resource-item {
+
+    display: flex;
+    margin: 25px auto;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #ddd;
+
+
+    &__col-1 {}
+    &__col-2 { margin-left: auto; }
+
+
+    // Resource Item Title
+    &__title {
+
+      .fa {
+        margin-right: 8px;
+        color: #18acdf;
+       }
+
+      h1 {
+        color: #18acdf;
+        text-decoration: underline;
+        font-size: 1.6em;
+        margin: 0;
+      }
+
+      &:hover h1 {
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      a, a:hover, a:visited {
+
+        color: #18acdf;
+
+        &:hover { text-decoration: none; }
+
+      }
+
+    } // __title
+
+
+    // Resource Item Footer
+    &__footer { display: flex; }
+
+
+    &__credentials {
+
+      display: flex;
+      background-color: #efeff5;
+      border: 1px solid #dadae1;
+      border-radius: 3px;
+      padding: 0 5px;
+      margin-right: 20px;
+
+      .title {
+        margin: auto 5px;
+        align-items: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        //padding: 8px 14px;
+        font-size: 14px;
+        color: #888;
+      }
+
+      .divider {
+        margin: auto 10px;
+        align-items: center;
+        border-right: 1px solid #cacac1;
+        display: block;
+        height: 20px;
+      }
+
+      .value {
+        margin: auto 5px;
+        align-items: center;
+        color: #3d3d40;
+        font-size: 15px;
+      }
+
+    }
+
+  }
+
+
+
+
 // icons test
 
-.fa {color: #222; }
-
-//$fa-var-eye: "\f06e";
-//.fa-eye { background-image: $fa-var-eye; }
+.fa { color: #222; }

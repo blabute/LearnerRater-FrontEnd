@@ -12,6 +12,8 @@
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
 
+  <link href="../src/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -38,25 +40,105 @@
 
   <div class="resource-list-container">
 
-    <div class="resource-item" style="outline:1px solid pink;">
+    <div class="resource-item">
+
+      <div class="resource-item__col-1">
 
       <div class="resource-item__title">
-        <span>ICON</span>
-        <h1>Learning React & Redux</h1>
-        <span>ICON</span>
+        <h1 class="resource-title"><i class="fa fa-graduation-cap" aria-hidden="true"></i>Learning React & Redux</h1>
       </div>
 
-      <div class="resource-item__avgerage-rating"></div>
+      <div class="resource-item__description">
+        <p>Lorem ipsum dolor sit amet...</p>
+      </div>
 
-      <div class="resource-item__description"></div>
+      <div class="resource-item__footer">
 
-      <div class="resource-item__btn-review"></div>
+        <div class="resource-item__credentials">
+          <span class="title">AUTHOR</span><span class="value">Corey House</span>
+          <span class="divider"></span>
+          <span class="title">SOURCE</span><span class="value">Pluralsight</span>
+        </div>
 
-      <div class="resource-item__credentials"></div>
+        <div class="resource-item__btn-toggle-reviews">
+          <button class="btn btn--light">Show Reviews / 7</button>
+        </div>
 
-      <div class="resource-item__btn-toggle-reviews"></div>
+      </div><!-- // __footer -->
 
-    </div>
+    </div><!-- // __col-1 -->
+
+    <div class="resource-item__col-2">
+
+      <div class="resource-item__average-rating">
+        <div>stars</div>
+      </div>
+
+
+      <div class="resource-item__btn-review">
+        <button type="button" class="btn">YOU BE THE JUDGE</button>
+      </div>
+
+    </div><!-- // col-2 -->
+
+
+
+
+
+  </div><!-- // resource-item -->
+
+
+
+
+  <div class="resource-item">
+
+
+        <div class="resource-item__col-1">
+
+        <div class="resource-item__title">
+          <h1 class="resource-title"><i class="fa fa-graduation-cap" aria-hidden="true"></i>Learning React & Flux</h1>
+        </div>
+
+        <div class="resource-item__description">
+          <p>Lorem ipsum dolor sit amet...</p>
+        </div>
+
+        <div class="resource-item__footer">
+
+          <div class="resource-item__credentials">
+            <span class="title">AUTHOR</span><span class="value">Corey House</span>
+            <span class="divider"></span>
+            <span class="title">SOURCE</span><span class="value">Pluralsight</span>
+          </div>
+
+          <div class="resource-item__btn-toggle-reviews">
+            <button class="btn btn--light">Show Reviews / 4</button>
+          </div>
+
+        </div><!-- // __footer -->
+
+      </div><!-- // __col-1 -->
+
+      <div class="resource-item__col-2">
+
+        <div class="resource-item__average-rating">
+          <div>stars</div>
+        </div>
+
+
+        <div class="resource-item__btn-review">
+          <button type="button" class="btn">YOU BE THE JUDGE</button>
+        </div>
+
+      </div><!-- // col-2 -->
+
+
+
+
+
+    </div><!-- // resource-item -->
+
+
 
 
   </div>
