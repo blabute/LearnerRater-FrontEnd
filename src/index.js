@@ -8,7 +8,6 @@ import Root from './components/Root';
 
 import configureStore from './store/configureStore';
 import { syncHistoryWithStore } from 'react-router-redux';
-import AddCourseBtn from './components/AddCourseBtn';
 import {loadResourceSubjects} from './actions/resourceSubjectActions';
 
 import '../mockups/css/master.scss';
@@ -28,7 +27,6 @@ render(
     <Root store={store} history={history} />
   </AppContainer>
 
-  <AddCourseBtn/>
   </div>,
   document.getElementById('app')
 );

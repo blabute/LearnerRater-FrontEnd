@@ -7,6 +7,7 @@ import MockupPage from './components/mockups/MockupPage';
 import NotFoundPage from './components/NotFoundPage';
 import ReviewSystemHOC from './components/reviewSystem/ReviewSystemHOC';
 import ResourceSubjectsPage from './components/ResourceSubjects/ResourceSubjectsPage';
+import CourseHOC from './components/addCourses/CourseHOC';
 
 export default (
   <Route path="/" component={App}>
@@ -14,6 +15,7 @@ export default (
     <Route path="review-system" component={ReviewSystemHOC}/>
     <Route path="mockup" component={MockupPage}/>
     <Route path="resourcesubjects" component={ResourceSubjectsPage}/>
+    <Route path="addCourse" component={CourseHOC}/>
     <Route path="*" component={NotFoundPage}/>
   </Route>
 );
