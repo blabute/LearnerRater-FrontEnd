@@ -21,7 +21,7 @@ class ResourceSubjectsPage extends React.Component {
     return (
       <div>
         <Header/>
-        <h1>Resource Subjects</h1>
+        <h2 className="section-title">Subjects</h2>
         <ResourceSubjectsList resourceSubjects={resourceSubjects}/>
       </div>
     );

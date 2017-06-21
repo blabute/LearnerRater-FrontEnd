@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 
 const ResourceSubjectsListRow = ({resourceSubject}) => {
   return (
-    <tr>
-      <td>{resourceSubject.Category}</td>
-      <td>{resourceSubject.NumberOfResources}</td>
-    </tr>
+    <div className="subject-tile">
+      <h1>{resourceSubject.Category}</h1>
+      <div className="badge">{resourceSubject.NumberOfResources}</div>
+    </div>
   );
 };
 

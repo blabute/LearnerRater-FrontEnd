@@ -5,19 +5,17 @@ import ResourceSubjectsListRow from './ResourceSubjectsListRow';
 const ResourceSubjectsList = ({resourceSubjects}) => {
   //debugger;
   return (
-    <table>
-      <thead>
-      <tr>
-        <th>Category</th>
-        <th>NumberOfResources</th>
-      </tr>
-      </thead>
-      <tbody>
-      {resourceSubjects.map(resourceSubject =>
-        <ResourceSubjectsListRow key={resourceSubject.Category} resourceSubject={resourceSubject}/>
-      )}
-      </tbody>
-    </table>
+    <section className="subject-tiles">
+
+      <div className="subject-tile-container">
+
+        {resourceSubjects.map(resourceSubject =>
+          <ResourceSubjectsListRow key={resourceSubject.Category} resourceSubject={resourceSubject}/>
+        )}
+
+      </div>
+
+    </section>
   );
 };
 
