@@ -19,42 +19,48 @@ class CoursesHOC extends React.Component {
     this.props.change(name, nextValue);
   }
 
-submit ({category="",title="", author="", description="", website="", link="", userName=""}) {
+submit ({category="",title="", author="", description="", website="", link="", userName="", rating=""}) {
+  debugger;
   let error={};
   let isError=false;
-  const errMessage=" Required";
+  const errMsgRequired=" Required";
   if (category.trim()===""){
-    error.category=errMessage;
+    error.category=errMsgRequired;
     isError=true;
 
   }
   if (title.trim()===""){
-    error.title=errMessage;
+    error.title=errMsgRequired;
     isError=true;
 
   }
   if (author.trim()===""){
-    error.author=errMessage;
+    error.author=errMsgRequired;
     isError=true;
 
   }
   if (description.trim()===""){
-    error.description=errMessage;
+    error.description=errMsgRequired;
     isError=true;
 
   }
   if (website.trim()===""){
-    error.website=errMessage;
+    error.website=errMsgRequired;
     isError=true;
 
   }
   if (link.trim()===""){
-    error.link=errMessage;
+    error.link=errMsgRequired;
     isError=true;
   }
 
   if (userName.trim()===""){
-        error.userName=errMessage;
+        error.userName=errMsgRequired;
+        isError=true;
+
+  }
+  if (rating < 1){
+        error.rating=errMsgRequired;
         isError=true;
 
   }
