@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router';
-import ReviewListRow from './ReviewListRow';
+import ReviewSystemHOC from '../reviewSystem/ReviewSystemHOC';
 
 const ResourceListRow = ({resource}) => {
   //debugger;
@@ -17,10 +17,7 @@ const ResourceListRow = ({resource}) => {
         <Link to="{resource.URL}" activeClassName="active">{resource.URL}</Link>
       </div>
       <div>
-        Reviews:
-        {resource.Reviews.map(review =>
-          <ReviewListRow key={review.ID} review={review}/>
-        )}
+        <ReviewSystemHOC reviews={resource.Reviews} resourceId={resource.ID}/>
       </div>
       <hr/>
     </div>
