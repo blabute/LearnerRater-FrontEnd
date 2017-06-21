@@ -8,8 +8,8 @@ import Root from './components/Root';
 
 import configureStore from './store/configureStore';
 import { syncHistoryWithStore } from 'react-router-redux';
-import AddCourseBtn from './components/AddCourseBtn';
 import {loadResourceSubjects} from './actions/resourceSubjectActions';
+import {loadResources} from './actions/resourceActions';
 
 import '../mockups/css/master.scss';
 import './fonts/font-awesome-4.7.0/css/font-awesome.min.css';
@@ -17,6 +17,7 @@ import './fonts/font-awesome-4.7.0/css/font-awesome.min.css';
 
 const store = configureStore();
 store.dispatch(loadResourceSubjects());
+store.dispatch(loadResources());
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
@@ -28,7 +29,6 @@ render(
     <Root store={store} history={history} />
   </AppContainer>
 
-  <AddCourseBtn/>
   </div>,
   document.getElementById('app')
 );
