@@ -81,7 +81,8 @@ submit ({category="",title="", author="", description="", website="", link="", u
 }
 
 CoursesHOC.propTypes = {
-  change: PropTypes.func
+  change: PropTypes.func,
+  handleSubmit:PropTypes.isRequired
 };
 
 export default reduxForm({

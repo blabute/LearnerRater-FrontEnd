@@ -15,7 +15,7 @@ export default (
     <Route path="review-system" component={ReviewSystemHOC}/>
     <Route path="mockup" component={MockupPage}/>
     <Route path="resourcesubjects" component={ResourceSubjectsPage}/>
-    <Route path="addCourse" component={CourseHOC}/>
+    <Route path="addcourse" component={CourseHOC}/>
     <Route path="*" component={NotFoundPage}/>
   </Route>
 );
