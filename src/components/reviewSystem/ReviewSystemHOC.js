@@ -1,6 +1,6 @@
 import React from 'react';
 import ReviewForm from './ReviewForm';
-import { reduxForm } from 'redux-form';
+import { reduxForm, SubmissionError } from 'redux-form';
 import PropTypes from 'prop-types';
 
 class ReviewSystemHOC extends React.Component {
@@ -26,12 +26,35 @@ class ReviewSystemHOC extends React.Component {
     this.props.change(name, nextValue);
   }
 
-  onSubmitClick() {
-    const { reset } = this.props;
+  onSubmitClick({userName="", rating=""}) {
 
-    this.setState({isOverlay: false});
+    let error={};
+    let isError=false;
+    const errMsgRequired=" Required";
 
-    return reset();
+    if (userName.trim()===""){
+          error.userName=errMsgRequired;
+          isError=true;
+
+    }
+    if (rating < 1){
+          error.rating=errMsgRequired;
+          isError=true;
+
+    }
+
+    if (isError){
+      throw new SubmissionError(error);
+    }
+     else{
+       const { reset } = this.props;
+
+       this.setState({isOverlay: false});
+
+       return reset();
+     }
+
+
   }
 
   onCancelClick() {
@@ -43,15 +66,15 @@ class ReviewSystemHOC extends React.Component {
   }
 
   render() {
-
+    const {handleSubmit} = this.props;
     return (
       <div>
         <button type="button" onClick={this.onAddReviewClick} disabled={this.state.isOverlay}>Add Review</button>
         {this.state.isOverlay &&
-          <form>
+            <form onSubmit={handleSubmit(this.onSubmitClick)}>
             <h3>Add Review</h3>
             <ReviewForm onStarClick={this.onStarClick}/>
-            <button type="button" onClick={this.onSubmitClick}>Submit</button>
+            <button type="submit">Submit</button>
             <button type="button" onClick={this.onCancelClick}>Cancel</button>
           </form>
         }
@@ -63,7 +86,8 @@ class ReviewSystemHOC extends React.Component {
 ReviewSystemHOC.propTypes = {
   onStarClick: PropTypes.func,
   change: PropTypes.func,
-  reset: PropTypes.func
+  reset: PropTypes.func,
+  handleSubmit:PropTypes.isRequired
 };
 
 export default reduxForm({

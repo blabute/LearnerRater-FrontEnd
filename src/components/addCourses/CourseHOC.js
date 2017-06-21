@@ -20,6 +20,7 @@ class CoursesHOC extends React.Component {
   }
 
 submit ({category="",title="", author="", description="", website="", link="", userName="", rating=""}) {
+
   let error={};
   let isError=false;
   const errMsgRequired=" Required";
