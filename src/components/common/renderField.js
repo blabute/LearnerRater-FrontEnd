@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const renderField = (props) => {
 
-  const { tag, input, label, type } = props;
+  const { input, label, type } = props;
 
   return (
     <div className="qbox">
