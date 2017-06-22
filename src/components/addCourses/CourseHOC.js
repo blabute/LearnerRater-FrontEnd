@@ -19,7 +19,7 @@ class CoursesHOC extends React.Component {
     this.props.change(name, nextValue);
   }
 
-submit ({category="",title="", author="", description="", website="", link="", userName="", rating=""}) {
+submit ({category="",title="", author="", description="", website="", link="", Username="", Rating=""}) {
   let error={};
   let isError=false;
   const errMsgRequired=" Required";
@@ -53,13 +53,13 @@ submit ({category="",title="", author="", description="", website="", link="", u
     isError=true;
   }
 
-  if (userName.trim()===""){
-        error.userName=errMsgRequired;
+  if (Username.trim()===""){
+        error.Username=errMsgRequired;
         isError=true;
 
   }
-  if (rating < 1){
-        error.rating=errMsgRequired;
+  if (Rating < 1){
+        error.Rating=errMsgRequired;
         isError=true;
 
   }
@@ -87,7 +87,7 @@ submit ({category="",title="", author="", description="", website="", link="", u
 
 CoursesHOC.propTypes = {
   change: PropTypes.func,
-  handleSubmit:PropTypes.isRequired
+  handleSubmit:PropTypes.func
 };
 
 export default reduxForm({

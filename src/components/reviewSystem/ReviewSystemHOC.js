@@ -1,7 +1,11 @@
 import React from 'react';
-import ReviewForm from './ReviewForm';
-import { reduxForm } from 'redux-form';
+import ReviewList from './ReviewList';
+import ReviewOverlay from './ReviewOverlay';
+import { reduxForm, SubmissionError } from 'redux-form';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
+import * as reviewActions from '../../actions/reviewActions';
 
 class ReviewSystemHOC extends React.Component {
 
@@ -9,13 +13,19 @@ class ReviewSystemHOC extends React.Component {
     super();
 
     this.state = {
-      isOverlay: false
+      isOverlay: false,
+      areReviewsVisible: false
     };
 
+    this.onToggleReviewClick = this.onToggleReviewClick.bind(this);
     this.onAddReviewClick = this.onAddReviewClick.bind(this);
     this.onStarClick = this.onStarClick.bind(this);
     this.onSubmitClick = this.onSubmitClick.bind(this);
     this.onCancelClick = this.onCancelClick.bind(this);
+  }
+
+  onToggleReviewClick() {
+    this.setState({areReviewsVisible: !this.state.areReviewsVisible});
   }
 
   onAddReviewClick() {
@@ -26,12 +36,31 @@ class ReviewSystemHOC extends React.Component {
     this.props.change(name, nextValue);
   }
 
-  onSubmitClick() {
-    const { reset } = this.props;
+  onSubmitClick(values) {
+    let errors = {};
+    let isError = false;
+    const errMsgRequired =" Required";
+    const { Username, Rating } = values;
+    const { reset, resourceId } = this.props;
 
-    this.setState({isOverlay: false});
+    if (!Username){
+      errors.Username = errMsgRequired;
+      isError = true;
+    }
+    if (!Rating){
+      errors.Rating = errMsgRequired;
+      isError = true;
+    }
 
-    return reset();
+    if (isError) {
+      throw new SubmissionError(errors);
+    }
+   else {
+     this.setState({isOverlay: false});
+     this.props.actions.saveReview(resourceId);
+
+     return reset();
+   }
   }
 
   onCancelClick() {
@@ -43,17 +72,20 @@ class ReviewSystemHOC extends React.Component {
   }
 
   render() {
+    const { reviews, submitting, handleSubmit } = this.props;
 
     return (
       <div>
-        <button type="button" onClick={this.onAddReviewClick} disabled={this.state.isOverlay}>Add Review</button>
+        <button type="button" onClick={this.onToggleReviewClick}>
+          {this.state.areReviewsVisible ? "Hide Reviews" : "Show Reviews"} / {reviews.length || 0}
+        </button>
+        <button type="button" onClick={this.onAddReviewClick} disabled={this.state.isOverlay}>YOU BE THE JUDGE</button>
         {this.state.isOverlay &&
-          <form>
-            <h3>Add Review</h3>
-            <ReviewForm onStarClick={this.onStarClick}/>
-            <button type="button" onClick={this.onSubmitClick}>Submit</button>
-            <button type="button" onClick={this.onCancelClick}>Cancel</button>
-          </form>
+          <ReviewOverlay onStarClick={this.onStarClick} onSubmitClick={this.onSubmitClick} onCancelClick={this.onCancelClick}
+            handleSubmit={handleSubmit} submitting={submitting} />
+        }
+        {this.state.areReviewsVisible &&
+          <ReviewList reviews={reviews} />
         }
       </div>
     );
@@ -61,11 +93,25 @@ class ReviewSystemHOC extends React.Component {
 }
 
 ReviewSystemHOC.propTypes = {
+  actions: PropTypes.object.isRequired,
+  reviews: PropTypes.array,
   onStarClick: PropTypes.func,
   change: PropTypes.func,
-  reset: PropTypes.func
+  reset: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  pristine: PropTypes.bool,
+  submitting: PropTypes.bool,
+  resourceId: PropTypes.number
 };
 
-export default reduxForm({
+const postNewRating = reduxForm({
   form: 'ReviewForm',
 })(ReviewSystemHOC);
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(reviewActions, dispatch)
+  };
+}
+
+export default connect(null, mapDispatchToProps)(postNewRating);
