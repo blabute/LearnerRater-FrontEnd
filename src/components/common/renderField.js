@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const renderField = (props) => {
 
-  const {input, label, type, meta:{touched, error} } = props;
+  const {input, label, type, id, meta:{touched, error} } = props;
 
   return (
     <div className="qbox">
@@ -11,7 +11,7 @@ const renderField = (props) => {
         <label>{label}</label>
       </div>
       <div className="answer">
-        <props.tag {...input} placeholder={label} type={type} />
+        <props.tag {...input} placeholder={label} type={type} id={id}/>
         {touched && error &&
         <span className="error">{error}</span>}
       </div>
@@ -21,6 +21,7 @@ const renderField = (props) => {
 
 renderField.propTypes = {
   tag: PropTypes.string,
+  id: PropTypes.string,
   input: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,

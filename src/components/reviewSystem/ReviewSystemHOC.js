@@ -76,10 +76,10 @@ class ReviewSystemHOC extends React.Component {
 
     return (
       <div>
-        <button type="button" onClick={this.onToggleReviewClick}>
+        <button type="button" onClick={this.onToggleReviewClick} id="btnToggleReviews">
           {this.state.areReviewsVisible ? "Hide Reviews" : "Show Reviews"} / {reviews.length || 0}
         </button>
-        <button type="button" onClick={this.onAddReviewClick} disabled={this.state.isOverlay}>YOU BE THE JUDGE</button>
+        <button type="button" onClick={this.onAddReviewClick} disabled={this.state.isOverlay} id="btnAddReview">YOU BE THE JUDGE</button>
         {this.state.isOverlay &&
           <ReviewOverlay onStarClick={this.onStarClick} onSubmitClick={this.onSubmitClick} onCancelClick={this.onCancelClick}
             handleSubmit={handleSubmit} submitting={submitting} />
