@@ -145,6 +145,68 @@ section {
 
 
 
+
+
+
+//------------------------------------------------------------------------------
+// MAIN TITLE BAR
+//------------------------------------------------------------------------------
+
+
+  .main-title {
+
+    display: flex;
+    background-color: #1db3e7;
+    color: white;
+    padding: 0 60px;
+
+
+    span,
+    span .fa,
+    span a { color: rgba(255,255,255,.7); }
+
+    span a:hover,
+    span a:visited { text-decoration: none; }
+
+    span .fa { font-size: 80%; margin-right:12px; margin-left: -26px; }
+
+    button.btn {
+      align-self: center;
+      //margin-right: 60px;
+      margin-left: auto;
+      background-color: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.3);
+
+      &:hover {
+        border-color: transparent;
+        background-color: rgba(255,255,255,.3);
+      }
+
+      &:active {
+        background-color: rgba(0,0,0,.1);
+      }
+
+      .fa {
+        color: white;
+        padding-right: 4px;
+      }
+
+    }
+
+    h2 { display: flex; }
+
+    .badge {
+      font-size: .9em;
+
+      margin-left: 12px;
+    }
+
+  }
+
+
+
+
+
 //------------------------------------------------------------------------------
 // SORT BAR
 //------------------------------------------------------------------------------
@@ -161,12 +223,19 @@ section {
 
     a {
 
-      display: block;
+      display: flex;
       text-decoration: none;
       color: #96969b;
 
       &:last-of-type { margin-left: auto; }
 
+    }
+
+    .fa {
+      font-size: 90%;
+      color: #96969b;
+      margin: auto 6px;
+      padding-bottom: 2px;
     }
 
   }
