@@ -7,14 +7,15 @@ const ResourceListRow = ({resource}) => {
   //debugger;
   return (
     <div className="resource-item">
+
+
       <div className="resource-item__col-1">
 
         <div className="resource-item__title">
           <h1 className="resource-title">
-            <i className="fa fa-graduation-cap" aria-hidden="true"></i>
+            <i className="fa fa-graduation-cap" aria-hidden="true" />
             <Link to="{resource.URL}" activeClassName="active">{resource.Title}</Link>
           </h1>
-
         </div>
 
         <div className="resource-item__description"><p>{resource.Description}</p></div>
@@ -23,7 +24,7 @@ const ResourceListRow = ({resource}) => {
 
           <div className="resource-item__credentials">
             <span className="title">AUTHOR</span><span className="value">{resource.Author}</span>
-            <span className="divider"></span>
+            <span className="divider" />
             <span className="title">SOURCE</span><span className="value">{resource.Website}</span>
           </div>
 
@@ -35,22 +36,21 @@ const ResourceListRow = ({resource}) => {
 
         {/* <div>Category: {resource.Category}</div> */}
 
-        </div>{/* // __col-1 */}
+      </div>{/* // __col-1 */}
 
 
-        <div className="resource-item__col-2">
+      <div className="resource-item__col-2">
 
-          <div className="resource-item__average-rating">
-            <div>AVERAGE RATING {resource.AverageRating}</div>
-          </div>
+        <div className="resource-item__average-rating">
+          <div>AVERAGE RATING {resource.AverageRating}</div>
+        </div>
 
 
-          <div className="resource-item__btn-review">
-            <ReviewSystemHOC reviews={resource.Reviews} resourceId={resource.ID}/>
-          </div>
+        <div className="resource-item__btn-review">
+          <ReviewSystemHOC reviews={resource.Reviews} resourceId={resource.ID}/>
+        </div>
 
-        </div>{/* // __col-2 */}
-
+      </div>{/* // __col-2 */}
 
 
     </div>
