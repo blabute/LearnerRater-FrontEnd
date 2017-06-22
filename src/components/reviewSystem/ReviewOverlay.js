@@ -10,8 +10,8 @@ const ReviewOverlay = props => {
     <form onSubmit={handleSubmit(onSubmitClick)}>
       <h3>Add Review</h3>
       <ReviewForm onStarClick={onStarClick} />
-      <button type="submit" disabled={submitting}>Submit</button>
-      <button type="button" onClick={onCancelClick}>Cancel</button>
+      <button type="submit" disabled={submitting} id="btnSubmitRating">Submit</button>
+      <button type="button" onClick={onCancelClick} id="btnCancelRating">Cancel</button>
     </form>
   );
 };

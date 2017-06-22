@@ -10,9 +10,9 @@ const ReviewForm = props => {
 
   return (
     <div>
-      <Field name="Username" tag="input" component={renderField} type="text" label="Username" />
-      <Field name="Rating" component={renderStarRatingComponent} label="Rating" onStarClick={onStarClick} />
-      <Field name="Comment" tag="textarea" component={renderField} type="textarea" label="Comment" />
+      <Field name="Username" tag="input" component={renderField} type="text" label="Username" id="inputUsername"/>
+      <Field name="Rating" component={renderStarRatingComponent} label="Rating" onStarClick={onStarClick} id="starRating"/>
+      <Field name="Comment" tag="textarea" component={renderField} type="textarea" label="Comment" id="inputComment"/>
     </div>
   );
 };
