@@ -11,6 +11,14 @@ class ReviewApi {
       resolve(review);
     });
   }
+
+  static deleteReview(resourceId) {
+
+    return new Promise((resolve) => {
+
+      resolve(resourceId);
+    });
+  }
 }
 
 export default ReviewApi;

@@ -7,6 +7,10 @@ export default function reviewReducer(state = [], action) {
         ...state,
         Object.assign({}, action.review)
       ];
+    case types.DELETE_REVIEW_SUCCESS:
+      return [
+        ...state.filter(review => review.ID !== action.reviewId)
+      ];
     default:
       return state;
   }

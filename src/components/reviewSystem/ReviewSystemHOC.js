@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import * as reviewActions from '../../actions/reviewActions';
+import * as userInterfaceActions from '../../actions/userInterfaceActions';
 
 class ReviewSystemHOC extends React.Component {
 
@@ -72,7 +73,7 @@ class ReviewSystemHOC extends React.Component {
   }
 
   render() {
-    const { reviews, submitting, handleSubmit } = this.props;
+    const { resourceId, reviews, submitting, handleSubmit } = this.props;
 
     return (
       <div>
@@ -85,7 +86,7 @@ class ReviewSystemHOC extends React.Component {
             handleSubmit={handleSubmit} submitting={submitting} />
         }
         {this.state.areReviewsVisible &&
-          <ReviewList reviews={reviews} />
+          <ReviewList resourceId={resourceId} reviews={reviews} />
         }
       </div>
     );
@@ -94,14 +95,14 @@ class ReviewSystemHOC extends React.Component {
 
 ReviewSystemHOC.propTypes = {
   actions: PropTypes.object.isRequired,
+  resourceId: PropTypes.number.isRequired,
   reviews: PropTypes.array,
   onStarClick: PropTypes.func,
   change: PropTypes.func,
   reset: PropTypes.func,
   handleSubmit: PropTypes.func,
   pristine: PropTypes.bool,
-  submitting: PropTypes.bool,
-  resourceId: PropTypes.number
+  submitting: PropTypes.bool
 };
 
 const postNewRating = reduxForm({
@@ -110,7 +111,7 @@ const postNewRating = reduxForm({
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(reviewActions, dispatch)
+    actions: bindActionCreators({...reviewActions, ...userInterfaceActions}, dispatch)
   };
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
+import ManageButton from './ManageButton';
 
 const Header = () => {
   return (
@@ -16,6 +17,7 @@ const Header = () => {
 
         <h1>LearnerRater</h1>
         <h2>So you learned something. Now let us know what you think.</h2>
+        <ManageButton />
 
       </div>
     </div>

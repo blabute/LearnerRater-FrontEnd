@@ -2,11 +2,11 @@ import * as types from  '../actions/actionTypes';
 import reviewReducer from './reviewReducer';
 
 export default function resourceReducer(state = [], action) {
-  //debugger;
   switch (action.type) {
     case types.LOAD_RESOURCES_SUCCESS:
       return action.resources;
-    case types.CREATE_REVIEW_SUCCESS: {
+    case types.CREATE_REVIEW_SUCCESS:
+    case types.DELETE_REVIEW_SUCCESS:{
 
       const updatedState = state.map(resource => {
 
@@ -23,7 +23,6 @@ export default function resourceReducer(state = [], action) {
 
       return updatedState;
     }
-
     default:
       return state;
   }
