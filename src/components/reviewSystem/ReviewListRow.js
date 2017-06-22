@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StarRatingComponent from '../StarRatingComponent';
+import StarRatingComponent from '../common/StarRatingComponent';
 
 const ReviewListRow = props => {
 

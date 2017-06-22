@@ -1,5 +1,5 @@
 import React from 'react';
-import StarRatingComponent from '../StarRatingComponent';
+import StarRatingComponent from './StarRatingComponent';
 
 const renderStarRatingComponent = (field) => {
 
