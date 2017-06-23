@@ -23,6 +23,7 @@ submit ({category="",title="", author="", description="", website="", link="", U
   let error={};
   let isError=false;
   const errMsgRequired=" Required";
+  category="redux";
   if (category.trim()===""){
     error.category=errMsgRequired;
     isError=true;
