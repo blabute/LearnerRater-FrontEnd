@@ -4,7 +4,7 @@ import ReviewForm from './ReviewForm';
 
 const ReviewOverlay = props => {
 
-  const { onStarClick, onSubmitClick, onCancelClick, submitting, handleSubmit } = props;
+  const { onStarClick, onSubmitClick, onCancelClick, submitting, handleSubmit, title } = props;
 
   return (
 
@@ -19,11 +19,11 @@ const ReviewOverlay = props => {
 
 
           <form onSubmit={handleSubmit(onSubmitClick)}>
-            <h3>(Resource Title)</h3>
+            <h3>{title}</h3>
             <ReviewForm onStarClick={onStarClick} />
             <div className="qbox">
               <div className="question">
-
+                {}
               </div>
 
               <div className="answer">
@@ -48,6 +48,7 @@ ReviewOverlay.propTypes = {
   onSubmitClick: PropTypes.func,
   onCancelClick: PropTypes.func,
   handleSubmit: PropTypes.func,
+  title: PropTypes.string,
   pristine: PropTypes.bool,
   submitting: PropTypes.bool
 };

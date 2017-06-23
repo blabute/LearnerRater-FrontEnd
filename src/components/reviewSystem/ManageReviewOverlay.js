@@ -26,7 +26,7 @@ class ManageReviewOverlay extends React.Component {
     let isError = false;
     const errMsgRequired =" Required";
     const { Username, Rating } = values;
-    const { reset, resourceId } = this.props;
+    const { reset, resourceId, closeOverlay } = this.props;
 
     if (!Username){
       errors.Username = errMsgRequired;
@@ -43,29 +43,29 @@ class ManageReviewOverlay extends React.Component {
    else {
      this.setState({isOverlay: false});
      this.props.actions.saveReview(resourceId);
-     this.props.actions.closeAddReviewOverlay();
+     closeOverlay();
 
      return reset();
    }
   }
 
   onCancelClick() {
-    const { reset } = this.props;
+    const { reset, closeOverlay } = this.props;
 
     this.setState({isOverlay: false});
-    this.props.actions.closeAddReviewOverlay();
+    closeOverlay();
 
     return reset();
   }
 
   render() {
-    const { isAddReviewOverlayOpen, submitting, handleSubmit } = this.props;
+    const { isAddReviewOverlayOpen, submitting, handleSubmit, title } = this.props;
 
     return (
       <div>
         {isAddReviewOverlayOpen &&
           <ReviewOverlay onStarClick={this.onStarClick} onSubmitClick={this.onSubmitClick} onCancelClick={this.onCancelClick}
-            handleSubmit={handleSubmit} submitting={submitting} />
+            handleSubmit={handleSubmit} submitting={submitting} title={title}/>
         }
       </div>
     );
@@ -76,21 +76,17 @@ ManageReviewOverlay.propTypes = {
   actions: PropTypes.object.isRequired,
   resourceId: PropTypes.number.isRequired,
   isAddReviewOverlayOpen: PropTypes.bool,
+  closeOverlay: PropTypes.func,
   handleSubmit: PropTypes.func,
   change: PropTypes.func,
   reset: PropTypes.func,
-  submitting: PropTypes.bool
+  submitting: PropTypes.bool,
+  title: PropTypes.string
 };
 
 const postNewReview = reduxForm({
   form: 'ReviewForm',
 })(ManageReviewOverlay);
-
-function mapStateToProps(state) {
-  return {
-    isAddReviewOverlayOpen: state.userInterface.isAddReviewOverlayOpen
-  };
-}
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -98,4 +94,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(postNewReview);
+export default connect(null, mapDispatchToProps)(postNewReview);
