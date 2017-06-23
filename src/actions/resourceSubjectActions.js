@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import ResourceSubjectApi from '../api/mockResourceSubjectApi';
+import ResourceSubjectApi from '../api/resourceSubjectsApi';
 
 export function loadResourceSubjectsSucess(resourceSubjects) {
   return { type: types.LOAD_RESOURCESUBJECT_SUCCESS, resourceSubjects};
