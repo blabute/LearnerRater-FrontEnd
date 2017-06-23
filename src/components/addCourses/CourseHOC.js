@@ -19,7 +19,7 @@ class CoursesHOC extends React.Component {
     this.props.change(name, nextValue);
   }
 
-submit ({category="",title="", author="", description="", website="", link="", Username="", Rating=""}) {
+submit ({category="React",title="", author="", description="", website="", link="", Username="", Rating=""}) {
   let error={};
   let isError=false;
   const errMsgRequired=" Required";

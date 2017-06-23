@@ -9,10 +9,22 @@ export const items = [
   },
   {
     id: '3',
-    itemName: 'JSX'
+    itemName: 'JavaScript'
   },
   {
     id: '4',
+    itemName: 'ES6'
+  },
+  {
+    id: '5',
+    itemName: 'NCrunch'
+  },
+  {
+    id: '6',
+    itemName: 'Specflow'
+  },
+  {
+    id: '7',
     itemName: 'Other'
   }
 ];
