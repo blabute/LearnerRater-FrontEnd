@@ -68,7 +68,6 @@ class StarRatingComponent extends Component {
           className="dv-star-rating-input"
           type="radio"
           name={name}
-          id={id}
           value={i}
           checked={value === i}
           onChange={this.onChange.bind(this, i, name)}
@@ -81,6 +80,7 @@ class StarRatingComponent extends Component {
           className={'dv-star-rating-star ' + (value >= i ? 'dv-star-rating-full-star' : 'dv-star-rating-empty-star')}
           htmlFor={id}
           onClick={this.onStarClick.bind(this, i, value, name)}
+          id={id}
         >
           {this.renderIcon(i, value, name)}
         </label>
