@@ -48,6 +48,7 @@ class StarRatingComponent extends Component {
     const starStyles = (i, value) => ({
       float: 'right',
       cursor: editing ? 'pointer' : 'default',
+      fontSize: '1.5em',
       color: value >= i ? starColor : emptyStarColor
     });
     const radioStyles = {
@@ -143,7 +144,7 @@ StarRatingComponent.defaultProps = {
   value: 0,
   editing: true,
   starColor: '#ffb400',
-  emptyStarColor: '#333'
+  emptyStarColor: '#ddd'
 };
 
 export default StarRatingComponent;

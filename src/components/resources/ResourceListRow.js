@@ -15,6 +15,9 @@ const ResourceListRow = props => {
   return (
     <div className="resource-item">
 
+      <div className="manage-delete manage-delete--resource">
+        <i className="fa fa-trash-o" />
+      </div>
 
       <div className="resource-item__col-1">
 

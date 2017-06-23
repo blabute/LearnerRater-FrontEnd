@@ -9,6 +9,7 @@
 .header {
   background: #3d3d40;
   padding: .3em 20px;
+  display: flex;
 
   h1 {
     margin-bottom: 0;
@@ -18,6 +19,24 @@
   h2 {
     margin-top: .2em;
     color: rgba(255,255,255, .5);
+  }
+
+  .btn {
+
+    font-size: 12px;
+    background-color: #646466;
+    color: rgba(255,255,255,.5);
+
+    &:hover {
+      background-color: #7a7a7b;
+      color: rgba(255,255,255,.7);
+    }
+
+  }
+
+  .manage-btn-container {
+    margin: 16px 0 auto auto;
+
   }
 
 }
@@ -346,3 +365,21 @@ section {
 // icons test
 
 .fa { color: #222; }
+
+
+
+
+.manage-delete {
+
+  position: absolute;
+  left: 20px;
+
+  .fa { color: #f00; }
+
+  &--resource {
+
+    font-size: 1.4em;
+
+  }
+
+}

@@ -10,6 +10,8 @@ const ResourceList = ({resources}) => {
         <ResourceListRow key={resource.ID} resource={resource}/>
       )}
     </div>
+
+
   );
 };
 

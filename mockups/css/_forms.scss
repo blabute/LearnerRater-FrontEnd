@@ -67,7 +67,7 @@
 
     .answer {
 
-      flex: 1.25;
+      flex: 2;
 
     }
 
@@ -119,5 +119,7 @@
       background-color: #dadae1;
       color: #777;
     }
+
+    & + button.btn { margin-left: 16px; }
 
   }

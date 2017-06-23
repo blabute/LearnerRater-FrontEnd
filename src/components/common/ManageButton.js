@@ -19,8 +19,8 @@ class ManageButton extends React.Component {
   render() {
 
     return (
-      <div>
-        <button type="button" onClick={this.onManageClick} id="btnToggleManage">Manage</button>
+      <div className="manage-btn-container">
+        <button type="button" className="btn" onClick={this.onManageClick} id="btnToggleManage">Manage</button>
       </div>
     );
   }
