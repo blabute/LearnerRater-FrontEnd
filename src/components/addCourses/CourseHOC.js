@@ -19,11 +19,11 @@ class CoursesHOC extends React.Component {
     this.props.change(name, nextValue);
   }
 
-submit ({category="",title="", author="", description="", website="", link="", Username="", Rating=""}) {
+submit ({category="React",title="", author="", description="", website="", link="", Username="", Rating=""}) {
+debugger;
   let error={};
   let isError=false;
   const errMsgRequired=" Required";
-  category="redux";
   if (category.trim()===""){
     error.category=errMsgRequired;
     isError=true;
