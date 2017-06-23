@@ -1,10 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router';
-import ReviewSystemHOC from '../reviewSystem/ReviewSystemHOC';
+import AddReviewButton from '../reviewSystem/AddReviewButton';
+import ManageReviewOverlay from '../reviewSystem/ManageReviewOverlay';
+import ReviewList from '../reviewSystem/ReviewList';
+import StarRatingComponent from '../common/StarRatingComponent';
+import { computeAverage } from '../../utils/mathHelper';
+import ToggleReviewsVisibilityButton from '../reviewSystem/ToggleReviewsVisibilityButton';
 
-const ResourceListRow = ({resource}) => {
-  //debugger;
+const ResourceListRow = props => {
+  const { resource } = props;
+  const listOfRatings = resource.Reviews.map(review => review.Rating);
+  const averageRating = computeAverage(listOfRatings);
+
   return (
     <div className="resource-item">
 
@@ -14,7 +21,7 @@ const ResourceListRow = ({resource}) => {
         <div className="resource-item__title">
           <h1 className="resource-title">
             <i className="fa fa-graduation-cap" aria-hidden="true" />
-            <Link to="{resource.URL}" activeClassName="active">{resource.Title}</Link>
+            <a href={resource.URL} target="_blank">{resource.Title}</a>
           </h1>
         </div>
 
@@ -28,13 +35,17 @@ const ResourceListRow = ({resource}) => {
             <span className="title">SOURCE</span><span className="value">{resource.Website}</span>
           </div>
 
-          <div className="resource-item__btn-toggle-reviews">
-            <button className="btn btn--light">Show Reviews / 7</button>
-          </div>
+          <ToggleReviewsVisibilityButton numberOfReviews={resource.Reviews.length} />
 
         </div>
 
         {/* <div>Category: {resource.Category}</div> */}
+
+        {/* Shayne, where do you want this? */}
+        <ManageReviewOverlay resourceId={resource.ID}/>
+
+        <ReviewList reviews={resource.Reviews} resourceId={resource.ID}/>
+
 
       </div>{/* // __col-1 */}
 
@@ -42,13 +53,20 @@ const ResourceListRow = ({resource}) => {
       <div className="resource-item__col-2">
 
         <div className="resource-item__average-rating">
-          <div>AVERAGE RATING {resource.AverageRating}</div>
+          {averageRating !== null ? (
+            <div>
+              AVERAGE RATING
+              <StarRatingComponent name="AverageRating" value={averageRating} editing={false} />
+            </div>
+          ) : (
+            <div>
+              Be the first to rate this resource!
+            </div>
+          )}
         </div>
 
 
-        <div className="resource-item__btn-review">
-          <ReviewSystemHOC reviews={resource.Reviews} resourceId={resource.ID}/>
-        </div>
+        <AddReviewButton />
 
       </div>{/* // __col-2 */}
 
