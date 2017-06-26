@@ -1,8 +1,9 @@
 
 import $ from 'jquery';
+import * as apiConsts from './apiConsts';
 
 function getResourceSubjectsData(){
-  return $.getJSON('http://web5dev:80/LearnerRaterWCF/RESTApi.svc/GetCategories')
+  return $.getJSON(apiConsts.REST_SERVICE_URL + 'GetCategories')
     .then(function(data) {
       return data;
     });
