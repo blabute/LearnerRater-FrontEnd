@@ -25,7 +25,7 @@ class ReviewListRow extends React.Component  {
     return (
       <div className="review-container">
         {canDelete &&
-          <button type="button" onClick={this.deleteReview} id={`btnDeleteReview_${index}`} >Delete</button>
+          <button type="button" onClick={this.deleteReview} id={`btnDeleteReview_${index}`} className="btn btn--delete-review" ><i className="fa fa-times"></i></button>
         }
         <h3>{review.Username}</h3>
         <p>{review.Comment}</p>
