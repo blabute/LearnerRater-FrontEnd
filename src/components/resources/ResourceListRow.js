@@ -33,9 +33,9 @@ class ResourceListRow extends React.Component {
 
   toggleReviewList() {
 
-    const { resource } = this.props;
+    const { resource, animationDuration } = this.props;
 
-    $(`#reviewListContainer_${resource.ID}`).slideToggle();
+    $(`#reviewListContainer_${resource.ID}`).slideToggle({duration: animationDuration});
     this.setState({areReviewsVisible: !this.state.areReviewsVisible});
   }
 
@@ -119,7 +119,8 @@ class ResourceListRow extends React.Component {
 }
 
 ResourceListRow.propTypes = {
-  resource: PropTypes.object.isRequired
+  resource: PropTypes.object.isRequired,
+  animationDuration: PropTypes.number
 };
 
 export default ResourceListRow;

@@ -43,7 +43,7 @@ class ResourcePage extends React.Component {
           <a href="#"><i className="fa fa-chevron-up" />AVERAGE RATING</a>
         </div>
 
-        <ResourceList resources={resources}/>
+        <ResourceList resources={resources} animationDuration={250}/>
       </div>
     );
   }
