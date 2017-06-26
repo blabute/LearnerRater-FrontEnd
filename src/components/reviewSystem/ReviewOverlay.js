@@ -33,7 +33,11 @@ class ReviewOverlay extends React.Component {
 
 
             <form onSubmit={handleSubmit(onSubmitClick)}>
-              <h3>{title}</h3>
+              <div className="qbox" style={{borderBottom: '1px solid #ccc'}}>
+                <div className="question">Resource Title</div>
+                <div className="answer"><h3>{title}</h3></div>
+              </div>
+
               <ReviewForm onStarClick={onStarClick} />
               <div className="qbox">
                 <div className="question">
