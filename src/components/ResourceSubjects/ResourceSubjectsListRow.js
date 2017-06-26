@@ -4,11 +4,9 @@ import {Link} from 'react-router';
 
 const ResourceSubjectsListRow = ({resourceSubject}) => {
   return (
-    <Link to={'/resources/' + resourceSubject.Category} >
-      <div className="subject-tile">
-        <h1>{resourceSubject.Category}</h1>
-        <div className="badge">{resourceSubject.NumberOfResources}</div>
-      </div>
+    <Link to={'/resources/' + resourceSubject.Category}  className="subject-tile">
+      <h1>{resourceSubject.Category}</h1>
+      <div className="badge">{resourceSubject.NumberOfResources}</div>
     </Link>
   );
 };
