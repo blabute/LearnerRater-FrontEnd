@@ -8,7 +8,17 @@ const ToggleReviewsVisibilityButton = props => {
   return (
     <div className="resource-item__btn-toggle-reviews">
       <button className="btn btn--light" onClick={onClick} id="btnToggleReviewVisibility">
-        {areReviewsVisible ? "Hide Reviews" : "Show Reviews"} / {numberOfReviews || 0}
+        {areReviewsVisible ? (
+          <div>
+            <i className="fa fa-eye-slash" />
+            Hide Reviews
+          </div>
+        ) : (
+          <div>
+            <i className="fa fa-eye" />
+            Show Reviews / {numberOfReviews || 0}
+          </div>
+        )}
       </button>
     </div>
   );
