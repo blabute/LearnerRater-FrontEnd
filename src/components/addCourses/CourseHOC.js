@@ -3,6 +3,7 @@ import ReviewForm from '../reviewSystem/ReviewForm';
 import {reduxForm, SubmissionError} from 'redux-form';
 import PropTypes from 'prop-types';
 import CourseForm from './CourseForm';
+import * as categories from '../../api/categories';
 
 class CoursesHOC extends React.Component {
 
@@ -20,6 +21,7 @@ class CoursesHOC extends React.Component {
   }
 
 submit ({category="React",title="", author="", description="", website="", link="", Username="", Rating=""}) {
+
   let error={};
   let isError=false;
   const errMsgRequired=" Required";
@@ -76,7 +78,9 @@ submit ({category="React",title="", author="", description="", website="", link=
     return (
        <form onSubmit={handleSubmit(this.submit)}>
         <h3>Add Course</h3>
-        <CourseForm/>
+        <CourseForm data={categories.items.map((category) =>
+        <option key={category.id} value={category.itemName}>{category.itemName}</option>)}
+        />
         <ReviewForm onStarClick={this.onStarClick}/>
         <button type="submit">Submit</button>
         <button type="button">Cancel</button>

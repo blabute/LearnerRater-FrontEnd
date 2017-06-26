@@ -1,9 +1,10 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import renderField from '../common/renderField';
-import * as categories from '../../api/categories';
 
-const CourseForm = () =>  {
+
+const CourseForm = (props) =>  {
+  const {data} = props;
   return (
     <div>
       <div className="qbox">
@@ -12,9 +13,7 @@ const CourseForm = () =>  {
           </div>
           <div className="answer">
           <Field name="category" component="select" id="category">
-              {categories.items.map((category) =>
-              <option key={category.id} value={category.itemName}>{category.itemName}</option>
-              )}
+          {data}    
           </Field>
         </div>
       </div>
