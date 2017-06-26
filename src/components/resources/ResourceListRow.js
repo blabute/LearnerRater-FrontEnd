@@ -7,7 +7,7 @@ import StarRatingComponent from '../common/StarRatingComponent';
 import { computeAverage } from '../../utils/mathHelper';
 import ToggleReviewsVisibilityButton from '../reviewSystem/ToggleReviewsVisibilityButton';
 
-export class ResourceListRow extends React.Component {
+class ResourceListRow extends React.Component {
 
   constructor() {
     super();
