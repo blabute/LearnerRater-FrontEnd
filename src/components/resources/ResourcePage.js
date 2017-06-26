@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 import Header from '../common/Header';
 import ResourceList from './ResourceList';
-import {loadResources} from '../../actions/resourceActions';
+import * as resourceActions from '../../actions/resourceActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
@@ -12,10 +12,11 @@ class ResourcePage extends React.Component {
 
   constructor(props, context) {
     super(props, context);
-  }
-
-  resourceRow(resource, index) {
-    return <div key={index}>{resource.ID}</div>;
+    //debugger;
+    this.state = {
+      resource: {subjectTitle: props.params.subject}
+    };
+    this.props.actions.loadResources(this.state.resource.subjectTitle);
   }
 
   render() {
@@ -33,7 +34,7 @@ class ResourcePage extends React.Component {
         <Header/>
 
         <div className="main-title">
-          <h2><span style={mainTitleStyle}><i className="fa fa-chevron-left" /><Link to="/">Subjects</Link> /&nbsp;</span> React <div className="badge">7</div></h2>
+          <h2><span style={mainTitleStyle}><i className="fa fa-chevron-left" /><Link to="/">Subjects</Link> /&nbsp;</span> {this.state.resource.subjectTitle} <div className="badge">{resources.length}</div></h2>
           <button type="button" className="btn"><i className="fa fa-plus" /> ADD RESOURCE LINK</button>
         </div>
 
@@ -50,19 +51,22 @@ class ResourcePage extends React.Component {
 
 ResourcePage.propTypes = {
   resources: PropTypes.array.isRequired,
-  actions: PropTypes.func.isRequired
+  actions: PropTypes.object.isRequired,
+  params: PropTypes.object.isRequired
 };
 
-function mapStateToProps (state){
+function mapStateToProps (state, ownProps){
   //debugger;
+  const subjectName = ownProps.params.subject;
   return {
-    resources: state.resources
+    resources: state.resources,
+    subject: subjectName
   };
 }
 
 function mapDispatchToProps(dispatch){
   return {
-    actions:bindActionCreators(loadResources, dispatch)
+    actions:bindActionCreators(resourceActions, dispatch)
   };
 }
 

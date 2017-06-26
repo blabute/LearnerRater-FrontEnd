@@ -14,6 +14,7 @@ export default (
     <Route path="mockup" component={MockupPage}/>
     <Route path="addcourse" component={CourseHOC}/>
     <Route path="resources" component={ResourcePage}/>
+    <Route path="resources/:subject" component={ResourcePage}/>
     <Route path="*" component={NotFoundPage}/>
   </Route>
 );

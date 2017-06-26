@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../common/Header';
 import ResourceSubjectsList from './ResourceSubjectsList';
-import {loadResourceSubjects} from '../../actions/resourceSubjectActions';
+import * as subjectActions from '../../actions/resourceSubjectActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
@@ -10,10 +10,7 @@ class ResourceSubjectsPage extends React.Component {
 
   constructor(props, context) {
     super(props, context);
-  }
-
-  resourceSubjectsRow(resourceSubject, index) {
-    return <div key={index}>{resourceSubject.Category}</div>;
+    this.props.actions.loadResourceSubjects();
   }
 
   render() {
@@ -30,11 +27,10 @@ class ResourceSubjectsPage extends React.Component {
 
 ResourceSubjectsPage.propTypes = {
   resourceSubjects: PropTypes.array.isRequired,
-  actions: PropTypes.func.isRequired
+  actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps (state){
-  //debugger;
   return {
     resourceSubjects: state.resourceSubjects
   };
@@ -42,7 +38,7 @@ function mapStateToProps (state){
 
 function mapDispatchToProps(dispatch){
   return {
-    actions:bindActionCreators(loadResourceSubjects, dispatch)
+    actions:bindActionCreators(subjectActions, dispatch)
   };
 }
 
