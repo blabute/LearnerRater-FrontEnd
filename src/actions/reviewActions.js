@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import reviewApi from '../api/mockReviewApi';
+import reviewApi from '../api/reviewApi';
 
 export function createReviewSuccess(review, resourceId) {
   return {type: types.CREATE_REVIEW_SUCCESS, review, resourceId: resourceId};

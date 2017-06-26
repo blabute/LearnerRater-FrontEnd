@@ -6,6 +6,7 @@ import ReviewList from '../reviewSystem/ReviewList';
 import StarRatingComponent from '../common/StarRatingComponent';
 import { computeAverage } from '../../utils/mathHelper';
 import ToggleReviewsVisibilityButton from '../reviewSystem/ToggleReviewsVisibilityButton';
+import $ from 'jquery';
 
 class ResourceListRow extends React.Component {
 
@@ -31,6 +32,10 @@ class ResourceListRow extends React.Component {
   }
 
   toggleReviewList() {
+
+    const { resource } = this.props;
+
+    $(`#reviewListContainer_${resource.ID}`).slideToggle();
     this.setState({areReviewsVisible: !this.state.areReviewsVisible});
   }
 
@@ -103,9 +108,7 @@ class ResourceListRow extends React.Component {
         <ManageReviewOverlay resourceId={resource.ID} isAddReviewOverlayOpen={this.state.isAddReviewOverlayOpen}
           closeOverlay={this.closeAddReviewOverlay} title={resource.Title} />
 
-        {this.state.areReviewsVisible &&
-          <ReviewList reviews={resource.Reviews} resourceId={resource.ID}/>
-        }
+        <ReviewList reviews={resource.Reviews} resourceId={resource.ID} />
 
 
 

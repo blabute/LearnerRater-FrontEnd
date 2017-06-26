@@ -4,10 +4,10 @@ import ReviewListRow from './ReviewListRow';
 
 const ReviewList = props => {
 
-  const { reviews, resourceId} = props;
+  const { reviews, resourceId } = props;
 
   return (
-    <div className="reviews-container">
+    <div className="reviews-container" id={`reviewListContainer_${resourceId}`} style={{display: "none"}}>
       {reviews.map((review, index) => {
         return <ReviewListRow key={index} index={index} review={review} resourceId={resourceId} />;
       })}
