@@ -122,4 +122,22 @@
 
     & + button.btn { margin-left: 16px; }
 
+    &--delete-review {
+      background-color: #fff;
+      border-radius: 50%;
+      width: 29px;
+      height: 29px;
+      padding: 4px;
+      font-size: 1.2em;
+      line-height: 0;
+      margin-right: 12px;
+
+      &:hover .fa { color: #c30; }
+
+      &:active { background-color: rgba(0,0,0,.3); }
+
+      .fa { color: red; }
+
+    }
+
   }
