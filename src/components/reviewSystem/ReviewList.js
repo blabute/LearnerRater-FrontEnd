@@ -7,7 +7,7 @@ const ReviewList = props => {
   const { reviews, resourceId} = props;
 
   return (
-    <div className="review-container">
+    <div className="reviews-container">
       {reviews.map((review, index) => {
         return <ReviewListRow key={index} index={index} review={review} resourceId={resourceId} />;
       })}

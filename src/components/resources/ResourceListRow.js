@@ -73,12 +73,6 @@ class ResourceListRow extends React.Component {
 
           {/* <div>Category: {resource.Category}</div> */}
 
-          <ManageReviewOverlay resourceId={resource.ID} isAddReviewOverlayOpen={this.state.isAddReviewOverlayOpen}
-            closeOverlay={this.closeAddReviewOverlay} title={resource.Title} />
-
-          {this.state.areReviewsVisible &&
-            <ReviewList reviews={resource.Reviews} resourceId={resource.ID}/>
-          }
 
 
         </div>{/* // __col-1 */}
@@ -103,6 +97,17 @@ class ResourceListRow extends React.Component {
           <AddReviewButton onClick={this.openAddReviewOverlay}/>
 
         </div>{/* // __col-2 */}
+
+
+
+        <ManageReviewOverlay resourceId={resource.ID} isAddReviewOverlayOpen={this.state.isAddReviewOverlayOpen}
+          closeOverlay={this.closeAddReviewOverlay} title={resource.Title} />
+
+        {this.state.areReviewsVisible &&
+          <ReviewList reviews={resource.Reviews} resourceId={resource.ID}/>
+        }
+
+
 
 
       </div>

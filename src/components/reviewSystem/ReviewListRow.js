@@ -29,7 +29,7 @@ class ReviewListRow extends React.Component  {
         }
         <h3>{review.Username}</h3>
         <p>{review.Comment}</p>
-        <div>
+        <div className="star-rating-container">
           <StarRatingComponent name="Rating" value={review.Rating} editing={false} />
         </div>
       </div>
