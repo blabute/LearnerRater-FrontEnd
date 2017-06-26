@@ -2,46 +2,61 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReviewForm from './ReviewForm';
 
-const ReviewOverlay = props => {
+class ReviewOverlay extends React.Component {
 
-  const { onStarClick, onSubmitClick, onCancelClick, submitting, handleSubmit, title } = props;
+  constructor() {
+    super();
+  }
 
-  return (
+  componentWillMount() {
+    document.body.classList.add('is-overlayed');
+  }
 
-    <div className="overlay-container">
-      <div className="overlay">
+  componentWillUnmount() {
+    document.body.classList.remove('is-overlayed');
+  }
 
-        <div className="overlay__header">
-          <h1>Your Verdict Please</h1>
-        </div>
+  render() {
 
-        <div className="overlay__body">
+    const { onStarClick, onSubmitClick, onCancelClick, submitting, handleSubmit, title } = this.props;
+
+    return (
+
+      <div className="overlay-container">
+        <div className="overlay">
+
+          <div className="overlay__header">
+            <h1>Your Verdict Please</h1>
+          </div>
+
+          <div className="overlay__body">
 
 
-          <form onSubmit={handleSubmit(onSubmitClick)}>
-            <h3>{title}</h3>
-            <ReviewForm onStarClick={onStarClick} />
-            <div className="qbox">
-              <div className="question">
-                {}
+            <form onSubmit={handleSubmit(onSubmitClick)}>
+              <h3>{title}</h3>
+              <ReviewForm onStarClick={onStarClick} />
+              <div className="qbox">
+                <div className="question">
+                  {}
+                </div>
+
+                <div className="answer">
+                  <button type="submit" className="btn" disabled={submitting} id="btnSubmitRating">Submit</button>
+                  <button type="button" className="btn" onClick={onCancelClick} id="btnCancelRating">Cancel</button>
+                </div>
               </div>
 
-              <div className="answer">
-                <button type="submit" className="btn" disabled={submitting} id="btnSubmitRating">Submit</button>
-                <button type="button" className="btn" onClick={onCancelClick} id="btnCancelRating">Cancel</button>
-              </div>
-            </div>
+            </form>
 
-          </form>
 
+          </div>
 
         </div>
-
       </div>
-    </div>
 
-  );
-};
+    );
+  }
+}
 
 ReviewOverlay.propTypes = {
   onStarClick: PropTypes.func,
