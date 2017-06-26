@@ -3,12 +3,12 @@ import ReviewForm from '../reviewSystem/ReviewForm';
 import {reduxForm, SubmissionError} from 'redux-form';
 import PropTypes from 'prop-types';
 import CourseForm from './CourseForm';
-import * as categories from '../../api/categories';
+//import * as categories from '../../api/categories';
 
 class CoursesHOC extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props, context) {
+    super(props, context);
 
     this.state = {
       isOverlay: false
@@ -74,12 +74,12 @@ submit ({category="React",title="", author="", description="", website="", link=
    }
 }
   render() {
-    const {handleSubmit} = this.props;
+    const {handleSubmit,resourceSubjects} = this.props;
     return (
        <form onSubmit={handleSubmit(this.submit)}>
         <h3>Add Course</h3>
-        <CourseForm data={categories.items.map((category) =>
-        <option key={category.id} value={category.itemName}>{category.itemName}</option>)}
+        <CourseForm data={resourceSubjects.map((resourceSubject) =>
+        <option  key={resourceSubject.Category} value={resourceSubject.Category}>{resourceSubject.Category}</option>)}
         />
         <ReviewForm onStarClick={this.onStarClick}/>
         <button type="submit">Submit</button>
@@ -91,7 +91,8 @@ submit ({category="React",title="", author="", description="", website="", link=
 
 CoursesHOC.propTypes = {
   change: PropTypes.func,
-  handleSubmit:PropTypes.func
+  handleSubmit:PropTypes.func,
+  resourceSubjects:PropTypes.array.isRequired
 };
 
 export default reduxForm({
