@@ -1,16 +1,9 @@
 import React from 'react';
-import { Link, IndexLink } from 'react-router';
 import ManageButton from './ManageButton';
 
 const Header = () => {
   return (
     <div>
-      <nav>
-        <IndexLink to="/" activeClassName="active">Resource Subjects</IndexLink>
-        {" | "}
-        <Link to="/resources" activeClassName="active">Resources</Link>
-      </nav>
-
       <div className="header">
 
         <div>
