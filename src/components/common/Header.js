@@ -6,9 +6,7 @@ const Header = () => {
   return (
     <div>
       <nav>
-        <IndexLink to="/" activeClassName="active">Home</IndexLink>
-        {" | "}
-        <Link to="/resourcesubjects" activeClassName="active">Resource Subjects</Link>
+        <IndexLink to="/" activeClassName="active">Resource Subjects</IndexLink>
         {" | "}
         <Link to="/resources" activeClassName="active">Resources</Link>
       </nav>
