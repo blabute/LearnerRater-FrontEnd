@@ -10,12 +10,12 @@ const ToggleReviewsVisibilityButton = props => {
       <button className="btn btn--light" onClick={onClick} id="btnToggleReviewVisibility">
         {areReviewsVisible ? (
           <div>
-            <i className="fa fa-eye-slash" />
-            Hide Reviews
+            <i className="fa fa-eye-slash" style={{paddingRight: '8px', color: '#777'}} />
+            Hide Reviews / {numberOfReviews || 0}
           </div>
         ) : (
           <div>
-            <i className="fa fa-eye" />
+            <i className="fa fa-eye" style={{paddingRight: '8px',  color: '#777'}} />
             Show Reviews / {numberOfReviews || 0}
           </div>
         )}
