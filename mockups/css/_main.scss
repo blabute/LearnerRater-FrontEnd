@@ -120,50 +120,6 @@ section {
 
 }
 
-@media screen and (max-width: 800px) {
-
-  .subject-tile {
-
-      flex: 0 0 33.333%;
-
-  }
-
-}
-
-
-
-@media screen and (max-width: 600px) {
-
-  .subject-tile {
-
-      flex: 0 0 50%;
-
-  }
-
-}
-
-
-
-@media screen and (max-width: 400px) {
-
-  .subject-tile {
-
-      flex: 0 0 100%;
-
-  }
-
-}
-
-
-@media screen and (min-width: 1280px) {
-
-  .subject-tile {
-
-      flex: 0 0 20%;
-
-  }
-
-}
 
 
 
@@ -217,7 +173,10 @@ section {
 
     }
 
-    h2 { display: flex; }
+    h2 {
+      display: flex;
+      margin-right: 16px;
+    }
 
     .badge {
       font-size: .9em;
@@ -289,7 +248,7 @@ section {
 
 
     &__col-1 {}
-    &__col-2 { margin-left: auto; }
+    &__col-2 { margin-left: auto; margin-bottom: 16px; }
 
 
     // Resource Item Title
@@ -327,7 +286,7 @@ section {
     &__footer {
 
       display: flex;
-      margin-bottom: 16px;
+      flex-wrap: wrap;
 
     }
 
@@ -340,9 +299,10 @@ section {
       border-radius: 3px;
       padding: 0 5px;
       margin-right: 20px;
+      margin-bottom: 16px;
 
       .title {
-        margin: auto 5px;
+        margin: 7px 5px;
         align-items: center;
         font-weight: bold;
         text-transform: uppercase;
@@ -369,10 +329,15 @@ section {
     }
 
 
+    &__average-rating { min-width: 232px; }
+
+
     &__btn-review {
       text-align: right;
       margin-top: 12px;
     }
+
+    &__btn-toggle-reviews { margin-bottom: 16px; }
 
 
   }
@@ -449,6 +414,74 @@ section {
       flex-wrap: nowrap;
 
       .dv-star-rating { min-width: 100px; }
+
+    }
+
+  }
+
+
+
+
+
+
+  @media screen and (max-width: 800px) {
+
+    .main-title {     padding: 0 40px;      }
+
+    .sort-bar {       padding: 14px 40px;   }
+
+    .resource-item__col-2 {
+      display: flex;
+
+      .resource-item__btn-review { margin-top: 2px; margin-left: 16px; }
+
+    }
+
+    .resource-list-container { padding-right: 40px; }
+
+    .subject-tile {
+
+        flex: 0 0 33.333%;
+
+    }
+
+  }
+
+
+
+  @media screen and (max-width: 600px) {
+
+    .sm-query-hide { display: none !important; }
+
+    .main-title {     padding: 0 20px;      }
+
+    .sort-bar {       padding: 14px 20px;   }
+
+    .resource-list-container { padding-right: 20px; }
+
+
+    .subject-tile { flex: 0 0 50%; }
+
+  }
+
+
+
+  @media screen and (max-width: 400px) {
+
+    .subject-tile {
+
+        flex: 0 0 100%;
+
+    }
+
+  }
+
+
+  @media screen and (min-width: 1280px) {
+
+    .subject-tile {
+
+        flex: 0 0 20%;
 
     }
 

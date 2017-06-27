@@ -36,7 +36,8 @@ class ResourcePage extends React.Component {
 
     const mainTitleStyle = {
 
-      fontWeight: 'normal'
+      fontWeight: 'normal',
+      whiteSpace: 'nowrap'
 
     };
 
@@ -47,7 +48,7 @@ class ResourcePage extends React.Component {
         <Header/>
 
         <div className="main-title">
-          <h2><span style={mainTitleStyle}><i className="fa fa-chevron-left" /><Link to="/">Subjects</Link> /&nbsp;</span> {this.state.resource.subjectTitle} <div className="badge">{resources.length}</div></h2>
+          <h2><span style={mainTitleStyle}><i className="fa fa-chevron-left sm-query-hide" /><Link to="/">Subjects</Link> /&nbsp;</span> {this.state.resource.subjectTitle} <div className="badge">{resources.length}</div></h2>
           <button type="button" onClick={this.openAddCourseOverlay} className="btn"><i className="fa fa-plus" /> ADD RESOURCE LINK</button>
         </div>
 
