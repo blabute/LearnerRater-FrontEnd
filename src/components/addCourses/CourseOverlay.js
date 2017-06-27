@@ -1,6 +1,5 @@
 import React from 'react';
 import ReviewForm from '../reviewSystem/ReviewForm';
-import {reduxForm, SubmissionError} from 'redux-form';
 import PropTypes from 'prop-types';
 import CourseForm from './CourseForm';
 //import * as categories from '../../api/categories';
@@ -20,70 +19,17 @@ class CourseOverlay extends React.Component {
     this.props.change(name, nextValue);
   }
 
-submit ({category="React",title="", author="", description="", website="", link="", Username="", Rating=""}) {
-
-  let error={};
-  let isError=false;
-  const errMsgRequired=" Required";
-  if (category.trim()===""){
-    error.category=errMsgRequired;
-    isError=true;
-
-  }
-  if (title.trim()===""){
-    error.title=errMsgRequired;
-    isError=true;
-
-  }
-  if (author.trim()===""){
-    error.author=errMsgRequired;
-    isError=true;
-
-  }
-  if (description.trim()===""){
-    error.description=errMsgRequired;
-    isError=true;
-
-  }
-  if (website.trim()===""){
-    error.website=errMsgRequired;
-    isError=true;
-
-  }
-  if (link.trim()===""){
-    error.link=errMsgRequired;
-    isError=true;
-  }
-
-  if (Username.trim()===""){
-        error.Username=errMsgRequired;
-        isError=true;
-
-  }
-  if (Rating < 1){
-        error.Rating=errMsgRequired;
-        isError=true;
-
-  }
-
-  if (isError){
-    throw new SubmissionError(error);
-  }
-   else{
-     //save to server ;
-   }
-}
   render() {
-    const {handleSubmit,resourceSubjects, onCancelClick} = this.props;
+    const {handleSubmit,resourceSubjects, onCancelClick, onSubmitClick} = this.props;
     return (
-       <form onSubmit={handleSubmit(this.submit)}>
+       <form onSubmit={handleSubmit(onSubmitClick)}>
         <h3>Add Course</h3>
         <CourseForm data={resourceSubjects.map((resourceSubject) =>
         <option  key={resourceSubject.Category} value={resourceSubject.Category}>{resourceSubject.Category}</option>)}
         />
         <ReviewForm onStarClick={this.onStarClick}/>
-        <button type="submit" id="btnSubmitCourse">Submit</button>
-        <button type="button" onClick={onCancelClick} id="btnCancelCourse">Cancel</button>
+        <button type="submit" className="btn" id="btnSubmitCourse">Submit</button>
+        <button type="button" className="btn" onClick={onCancelClick} id="btnCancelCourse">Cancel</button>
       </form>
     );
   }
@@ -93,9 +39,8 @@ CourseOverlay.propTypes = {
   change: PropTypes.func,
   handleSubmit:PropTypes.func,
   resourceSubjects:PropTypes.array.isRequired,
-  onCancelClick:PropTypes.func
+  onCancelClick:PropTypes.func,
+  onSubmitClick:PropTypes.func
 };
 
-export default reduxForm({
-  form: 'AddCourseForm',
-})(CourseOverlay);
+export default CourseOverlay;
