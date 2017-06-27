@@ -6,6 +6,7 @@ import ResourceList from './ResourceList';
 import * as resourceActions from '../../actions/resourceActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import ManageCourseOverlay from '../addCourses/ManageCourseOverlay';
 
 
 class ResourcePage extends React.Component {
@@ -14,9 +15,21 @@ class ResourcePage extends React.Component {
     super(props, context);
     //debugger;
     this.state = {
-      resource: {subjectTitle: props.params.subject}
+      resource: {subjectTitle: props.params.subject},
+      isAddCourseOverlayOpen: false
     };
     this.props.actions.loadResources(this.state.resource.subjectTitle);
+
+    this.openAddCourseOverlay = this.openAddCourseOverlay.bind(this);
+    this.closeAddCourseOverlay = this.closeAddCourseOverlay.bind(this);
+  }
+
+  openAddCourseOverlay() {
+    this.setState({isAddCourseOverlayOpen: true});
+  }
+
+  closeAddCourseOverlay() {
+    this.setState({isAddCourseOverlayOpen: false});
   }
 
   render() {
@@ -35,7 +48,7 @@ class ResourcePage extends React.Component {
 
         <div className="main-title">
           <h2><span style={mainTitleStyle}><i className="fa fa-chevron-left" /><Link to="/">Subjects</Link> /&nbsp;</span> {this.state.resource.subjectTitle} <div className="badge">{resources.length}</div></h2>
-          <button type="button" className="btn"><i className="fa fa-plus" /> ADD RESOURCE LINK</button>
+          <button type="button" onClick={this.openAddCourseOverlay} className="btn"><i className="fa fa-plus" /> ADD RESOURCE LINK</button>
         </div>
 
         <div className="sort-bar">
@@ -44,6 +57,9 @@ class ResourcePage extends React.Component {
         </div>
 
         <ResourceList resources={resources} animationDuration={250}/>
+
+        <ManageCourseOverlay isAddCourseOverlayOpen={this.state.isAddCourseOverlayOpen}
+          closeOverlay={this.closeAddCourseOverlay}  />
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import renderField from '../common/renderField';
+import PropTypes from 'prop-types';
 
 
 const CourseForm = (props) =>  {
@@ -13,7 +14,7 @@ const CourseForm = (props) =>  {
           </div>
           <div className="answer">
           <Field name="category" component="select" id="category">
-          {data}    
+          {data}
           </Field>
         </div>
       </div>
@@ -24,6 +25,10 @@ const CourseForm = (props) =>  {
       <Field tag="input" name="link" component={renderField} type="text" label="Link" />
     </div>
   );
+};
+
+CourseForm.propTypes = {
+  data:PropTypes.array.isRequired
 };
 
 

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import CourseForm from './CourseForm';
 //import * as categories from '../../api/categories';
 
-class CoursesHOC extends React.Component {
+class CourseOverlay extends React.Component {
 
   constructor(props, context) {
     super(props, context);
@@ -74,7 +74,7 @@ submit ({category="React",title="", author="", description="", website="", link=
    }
 }
   render() {
-    const {handleSubmit,resourceSubjects} = this.props;
+    const {handleSubmit,resourceSubjects, onCancelClick} = this.props;
     return (
        <form onSubmit={handleSubmit(this.submit)}>
         <h3>Add Course</h3>
@@ -82,19 +82,20 @@ submit ({category="React",title="", author="", description="", website="", link=
         <option  key={resourceSubject.Category} value={resourceSubject.Category}>{resourceSubject.Category}</option>)}
         />
         <ReviewForm onStarClick={this.onStarClick}/>
-        <button type="submit">Submit</button>
-        <button type="button">Cancel</button>
+        <button type="submit" id="btnSubmitCourse">Submit</button>
+        <button type="button" onClick={onCancelClick} id="btnCancelCourse">Cancel</button>
       </form>
     );
   }
 }
 
-CoursesHOC.propTypes = {
+CourseOverlay.propTypes = {
   change: PropTypes.func,
   handleSubmit:PropTypes.func,
-  resourceSubjects:PropTypes.array.isRequired
+  resourceSubjects:PropTypes.array.isRequired,
+  onCancelClick:PropTypes.func
 };
 
 export default reduxForm({
   form: 'AddCourseForm',
-})(CoursesHOC);
+})(CourseOverlay);
