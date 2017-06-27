@@ -5,6 +5,7 @@ import * as subjectActions from '../../actions/resourceSubjectActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { reduxForm, SubmissionError } from 'redux-form';
+import * as courseActions from '../../actions/courseActions';
 
 class ManageCourseOverlay extends React.Component {
 
@@ -23,41 +24,44 @@ class ManageCourseOverlay extends React.Component {
     //return reset();
   }
   onSubmitClick (values) {
-    const {category="React",title="", author="", description="", website="", link="", Username="", Rating=""} = values;
+    //debugger;
+  const { closeOverlay } = this.props;
+  const {category="React",title="", author="", description="", website="", link="", Username="", Rating="1"} = values;
+
     let error={};
     let isError=false;
     const errMsgRequired=" Required";
-    if (!category){
+    if (category.trim()===""){
       error.category=errMsgRequired;
       isError=true;
 
     }
-    if (!title){
+    if (title.trim()===""){
       error.title=errMsgRequired;
       isError=true;
 
     }
-    if (!author){
+    if (author.trim()===""){
       error.author=errMsgRequired;
       isError=true;
 
     }
-    if (!description){
+    if (description.trim()===""){
       error.description=errMsgRequired;
       isError=true;
 
     }
-    if (!website){
+    if (website.trim()===""){
       error.website=errMsgRequired;
       isError=true;
 
     }
-    if (!link){
+    if (link.trim()===""){
       error.link=errMsgRequired;
       isError=true;
     }
 
-    if (!Username){
+    if (Username.trim()===""){
           error.Username=errMsgRequired;
           isError=true;
 
@@ -72,7 +76,8 @@ class ManageCourseOverlay extends React.Component {
       throw new SubmissionError(error);
     }
      else{
-       //save to server ;
+       this.props.actions.saveCourse(category);
+       closeOverlay();
      }
   }
 
@@ -90,6 +95,7 @@ class ManageCourseOverlay extends React.Component {
 }
 
 ManageCourseOverlay.propTypes = {
+  actions: PropTypes.object.isRequired,
   resourceSubjects: PropTypes.array.isRequired,
   closeOverlay: PropTypes.func,
   actions: PropTypes.object.isRequired,
@@ -106,12 +112,12 @@ function mapStateToProps (state){
 
 function mapDispatchToProps(dispatch){
   return {
-    actions:bindActionCreators(subjectActions, dispatch)
+    actions:bindActionCreators({...courseActions, ...subjectActions}, dispatch)
   };
 }
 
 const postAddCourse = reduxForm({
-  form: 'AddCourseForm',
+  form: 'CourseForm',
 })(ManageCourseOverlay);
 
 export default connect(mapStateToProps,mapDispatchToProps)(postAddCourse);
