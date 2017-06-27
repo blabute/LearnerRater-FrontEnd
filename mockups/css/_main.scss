@@ -248,7 +248,7 @@ section {
 
 
     &__col-1 {}
-    &__col-2 { margin-left: auto; }
+    &__col-2 { margin-left: auto; margin-bottom: 16px; }
 
 
     // Resource Item Title
@@ -286,7 +286,7 @@ section {
     &__footer {
 
       display: flex;
-      margin-bottom: 16px;
+      flex-wrap: wrap;
 
     }
 
@@ -299,9 +299,10 @@ section {
       border-radius: 3px;
       padding: 0 5px;
       margin-right: 20px;
+      margin-bottom: 16px;
 
       .title {
-        margin: auto 5px;
+        margin: 7px 5px;
         align-items: center;
         font-weight: bold;
         text-transform: uppercase;
@@ -335,6 +336,8 @@ section {
       text-align: right;
       margin-top: 12px;
     }
+
+    &__btn-toggle-reviews { margin-bottom: 16px; }
 
 
   }
@@ -434,6 +437,8 @@ section {
 
     }
 
+    .resource-list-container { padding-right: 40px; }
+
     .subject-tile {
 
         flex: 0 0 33.333%;
@@ -452,11 +457,10 @@ section {
 
     .sort-bar {       padding: 14px 20px;   }
 
-    .subject-tile {
+    .resource-list-container { padding-right: 20px; }
 
-        flex: 0 0 50%;
 
-    }
+    .subject-tile { flex: 0 0 50%; }
 
   }
 
