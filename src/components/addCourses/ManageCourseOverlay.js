@@ -32,38 +32,38 @@ class ManageCourseOverlay extends React.Component {
   onSubmitClick (values) {
     //debugger;
   const { closeOverlay } = this.props;
-  const {category="React",title="", author="", description="", website="", link="", Username="", Rating="1"} = values;
+  const {Category="React",Title="", Author="", Description="", Website="", URL="", Username="", Rating=""} = values;
 
     let error={};
     let isError=false;
     const errMsgRequired=" Required";
-    if (category.trim()===""){
-      error.category=errMsgRequired;
+    if (Category.trim()===""){
+      error.Category=errMsgRequired;
       isError=true;
 
     }
-    if (title.trim()===""){
-      error.title=errMsgRequired;
+    if (Title.trim()===""){
+      error.Title=errMsgRequired;
       isError=true;
 
     }
-    if (author.trim()===""){
-      error.author=errMsgRequired;
+    if (Author.trim()===""){
+      error.Author=errMsgRequired;
       isError=true;
 
     }
-    if (description.trim()===""){
-      error.description=errMsgRequired;
+    if (Description.trim()===""){
+      error.Description=errMsgRequired;
       isError=true;
 
     }
-    if (website.trim()===""){
-      error.website=errMsgRequired;
+    if (Website.trim()===""){
+      error.Website=errMsgRequired;
       isError=true;
 
     }
-    if (link.trim()===""){
-      error.link=errMsgRequired;
+    if (URL.trim()===""){
+      error.URL=errMsgRequired;
       isError=true;
     }
 
@@ -82,7 +82,7 @@ class ManageCourseOverlay extends React.Component {
       throw new SubmissionError(error);
     }
      else{
-       this.props.actions.saveCourse(category);
+       this.props.actions.saveCourse(Category);
        closeOverlay();
      }
   }
