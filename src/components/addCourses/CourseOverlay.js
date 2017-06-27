@@ -12,22 +12,17 @@ class CourseOverlay extends React.Component {
     this.state = {
       isOverlay: false
     };
-    this.onStarClick = this.onStarClick.bind(this);
-  }
-
-  onStarClick(nextValue, prevValue, name) {
-    this.props.change(name, nextValue);
   }
 
   render() {
-    const {handleSubmit,resourceSubjects, onCancelClick, onSubmitClick} = this.props;
+    const {onStarClick, handleSubmit,resourceSubjects, onCancelClick, onSubmitClick} = this.props;
     return (
        <form onSubmit={handleSubmit(onSubmitClick)}>
         <h3>Add Course</h3>
         <CourseForm data={resourceSubjects.map((resourceSubject) =>
         <option  key={resourceSubject.Category} value={resourceSubject.Category}>{resourceSubject.Category}</option>)}
         />
-        <ReviewForm onStarClick={this.onStarClick}/>
+        <ReviewForm onStarClick={onStarClick}/>
         <button type="submit" className="btn" id="btnSubmitCourse">Submit</button>
         <button type="button" className="btn" onClick={onCancelClick} id="btnCancelCourse">Cancel</button>
       </form>
@@ -36,6 +31,7 @@ class CourseOverlay extends React.Component {
 }
 
 CourseOverlay.propTypes = {
+  onStarClick: PropTypes.func,
   change: PropTypes.func,
   handleSubmit:PropTypes.func,
   resourceSubjects:PropTypes.array.isRequired,

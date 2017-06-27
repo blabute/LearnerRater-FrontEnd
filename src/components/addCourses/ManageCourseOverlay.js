@@ -12,6 +12,7 @@ class ManageCourseOverlay extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.props.actions.loadResourceSubjects();
+    this.onStarClick = this.onStarClick.bind(this);
     this.onCancelClick = this.onCancelClick.bind(this);
     this.onSubmitClick = this.onSubmitClick.bind(this);
   }
@@ -23,6 +24,11 @@ class ManageCourseOverlay extends React.Component {
 
     //return reset();
   }
+
+  onStarClick(nextValue, prevValue, name) {
+    this.props.change(name, nextValue);
+  }
+
   onSubmitClick (values) {
     //debugger;
   const { closeOverlay } = this.props;
@@ -86,7 +92,7 @@ class ManageCourseOverlay extends React.Component {
     return (
       <div>
         {isAddCourseOverlayOpen &&
-        <CourseOverlay resourceSubjects={resourceSubjects} onCancelClick={this.onCancelClick} onSubmitClick={this.onSubmitClick}
+        <CourseOverlay onStarClick={this.onStarClick} resourceSubjects={resourceSubjects} onCancelClick={this.onCancelClick} onSubmitClick={this.onSubmitClick}
         handleSubmit={handleSubmit} title={title}/>
         }
       </div>
@@ -95,7 +101,7 @@ class ManageCourseOverlay extends React.Component {
 }
 
 ManageCourseOverlay.propTypes = {
-  actions: PropTypes.object.isRequired,
+  change: PropTypes.func,
   resourceSubjects: PropTypes.array.isRequired,
   closeOverlay: PropTypes.func,
   actions: PropTypes.object.isRequired,
