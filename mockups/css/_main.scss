@@ -329,7 +329,11 @@ section {
     }
 
 
-    &__average-rating { min-width: 232px; }
+    &__average-rating {
+      margin: auto;
+      display: flex;
+      min-width: 232px;
+    }
 
 
     &__btn-review {

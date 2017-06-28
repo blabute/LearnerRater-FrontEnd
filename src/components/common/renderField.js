@@ -13,7 +13,7 @@ const renderField = (props) => {
       <div className="answer">
         <props.tag {...input} placeholder={label} type={type} id={id}/>
         {touched && error &&
-        <span className="error">{error}</span>}
+        <span className="error"><i className="fa fa-exclamation-circle" />{error}</span>}
       </div>
     </div>
   );
