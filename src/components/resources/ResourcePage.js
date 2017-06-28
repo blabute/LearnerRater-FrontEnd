@@ -46,7 +46,7 @@ class ResourcePage extends React.Component {
     return (
       <div>
         <Header/>
-        <ManageCoursePage isAddCourseOverlayOpen={this.state.isAddCourseOverlayOpen}
+        <ManageCoursePage subject={this.state.resource.subjectTitle} isAddCourseOverlayOpen={this.state.isAddCourseOverlayOpen}
           closeOverlay={this.closeAddCourseOverlay}  />
         {!this.state.isAddCourseOverlayOpen &&
         <div className="main-title">
