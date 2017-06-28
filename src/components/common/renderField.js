@@ -8,7 +8,7 @@ const renderField = (props) => {
   return (
     <div className="qbox">
       <div className="question">
-        <label>{label}</label>
+        <label>{label}<span className="is-required">*</span></label>
       </div>
       <div className="answer">
         <props.tag {...input} placeholder={label} type={type} id={id}/>

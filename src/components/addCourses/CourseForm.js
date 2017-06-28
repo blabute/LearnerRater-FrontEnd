@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 const CourseForm = (props) =>  {
   const {data} = props;
   return (
-    <div>
+    <div style={{marginTop: '30px'}}>
       <div className="qbox">
           <div className="question">
             <label>Category</label>

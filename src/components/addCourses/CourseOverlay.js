@@ -17,14 +17,21 @@ class CourseOverlay extends React.Component {
   render() {
     const {onStarClick, handleSubmit,resourceSubjects, onCancelClick, onSubmitClick} = this.props;
     return (
-       <form onSubmit={handleSubmit(onSubmitClick)}>
-        <h3>Add Course</h3>
+       <form onSubmit={handleSubmit(onSubmitClick)} className="form--add-resource">
+        <div className="main-title">
+          <h2>Add Resource Link</h2>
+        </div>
         <CourseForm data={resourceSubjects.map((resourceSubject) =>
         <option  key={resourceSubject.Category} value={resourceSubject.Category}>{resourceSubject.Category}</option>)}
         />
         <ReviewForm onStarClick={onStarClick}/>
-        <button type="submit" className="btn" id="btnSubmitCourse">Submit</button>
-        <button type="button" className="btn" onClick={onCancelClick} id="btnCancelCourse">Cancel</button>
+        <div className="qbox">
+          <div className="question" />
+          <div className="answer">
+            <button type="submit" className="btn" id="btnSubmitCourse">Submit</button>
+            <button type="button" className="btn" onClick={onCancelClick} id="btnCancelCourse">Cancel</button>
+          </div>
+        </div>
       </form>
     );
   }
