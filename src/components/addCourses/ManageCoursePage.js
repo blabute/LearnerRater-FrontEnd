@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CourseOverlay from './CourseOverlay';
+import CoursePage from './CoursePage';
 import * as subjectActions from '../../actions/resourceSubjectActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { reduxForm, SubmissionError } from 'redux-form';
 import * as courseActions from '../../actions/courseActions';
 
-class ManageCourseOverlay extends React.Component {
+class ManageCoursePage extends React.Component {
 
   constructor(props, context) {
     super(props, context);
@@ -92,7 +92,7 @@ class ManageCourseOverlay extends React.Component {
     return (
       <div>
         {isAddCourseOverlayOpen &&
-        <CourseOverlay onStarClick={this.onStarClick} resourceSubjects={resourceSubjects} onCancelClick={this.onCancelClick} onSubmitClick={this.onSubmitClick}
+        <CoursePage onStarClick={this.onStarClick} resourceSubjects={resourceSubjects} onCancelClick={this.onCancelClick} onSubmitClick={this.onSubmitClick}
         handleSubmit={handleSubmit} title={title}/>
         }
       </div>
@@ -100,7 +100,7 @@ class ManageCourseOverlay extends React.Component {
   }
 }
 
-ManageCourseOverlay.propTypes = {
+ManageCoursePage.propTypes = {
   change: PropTypes.func,
   resourceSubjects: PropTypes.array.isRequired,
   closeOverlay: PropTypes.func,
@@ -124,6 +124,6 @@ function mapDispatchToProps(dispatch){
 
 const postAddCourse = reduxForm({
   form: 'CourseForm',
-})(ManageCourseOverlay);
+})(ManageCoursePage);
 
 export default connect(mapStateToProps,mapDispatchToProps)(postAddCourse);

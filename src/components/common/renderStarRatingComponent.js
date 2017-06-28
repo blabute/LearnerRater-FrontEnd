@@ -8,7 +8,7 @@ const renderStarRatingComponent = (field) => {
   return (
     <div className="qbox">
       <div className="question">
-        <label>{label}</label>
+        <label>{label}<span className="is-required">*</span></label>
       </div>
       <div className="answer">
         <StarRatingComponent name={input.name} onStarClick={onStarClick} value={Number.parseInt(input.value)} />

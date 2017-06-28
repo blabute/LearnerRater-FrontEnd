@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import renderField from '../common/renderField';
 import PropTypes from 'prop-types';
+import renderFieldMandatory from '../common/renderFieldMandatory';
 
 
 const CourseForm = (props) =>  {
@@ -18,11 +18,11 @@ const CourseForm = (props) =>  {
           </Field>
         </div>
       </div>
-      <Field tag="input" name="Title" id="Title" component={renderField} type="text" label="Title" />
-      <Field tag="input" name="Author" id="Author" component={renderField} type="text" label="Author" />
-      <Field tag="textarea" name="Description" id="Description" component={renderField} type="textarea" label="Description" />
-      <Field tag="input" name="Website" id ="Website" component={renderField} type="text" label="Website" />
-      <Field tag="input" name="URL" id="URL"  component={renderField} type="text" label="Link" />
+      <Field tag="input" name="Title" id="Title" component={renderFieldMandatory} type="text" label="Title" />
+      <Field tag="input" name="Author" id="Author" component={renderFieldMandatory} type="text" label="Author" />
+      <Field tag="textarea" name="Description" id="Description" component={renderFieldMandatory} type="textarea" label="Description" />
+      <Field tag="input" name="Website" id ="Website" component={renderFieldMandatory} type="text" label="Website" />
+      <Field tag="input" name="URL" id="URL"  component={renderFieldMandatory} type="text" label="Link" />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import CourseForm from './CourseForm';
 //import * as categories from '../../api/categories';
 
-class CourseOverlay extends React.Component {
+class CoursePage extends React.Component {
 
   constructor(props, context) {
     super(props, context);
@@ -37,7 +37,7 @@ class CourseOverlay extends React.Component {
   }
 }
 
-CourseOverlay.propTypes = {
+CoursePage.propTypes = {
   onStarClick: PropTypes.func,
   change: PropTypes.func,
   handleSubmit:PropTypes.func,
@@ -46,4 +46,4 @@ CourseOverlay.propTypes = {
   onSubmitClick:PropTypes.func
 };
 
-export default CourseOverlay;
+export default CoursePage;
