@@ -23,6 +23,10 @@ export default function resourceReducer(state = [], action) {
 
       return updatedState;
     }
+    case types.CREATE_COURSE_SUCCESS:
+      return [...state,
+        Object.assign({}, action.course)
+      ];
     default:
       return state;
   }
