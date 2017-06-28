@@ -68,6 +68,9 @@
 
     .answer {
 
+      display: flex;
+      margin: auto;
+      align-items: center;
       flex: 2;
 
       .form--add-resource & { flex: 1.3; }
@@ -102,6 +105,10 @@
 
       color: red;
       padding-left: 8px;
+      white-space: nowrap;
+
+      //display: flex;
+
 
       .fa { color: red; }
 
@@ -114,6 +121,10 @@
     }
 
 
+    &--starrating {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
 
 
   }

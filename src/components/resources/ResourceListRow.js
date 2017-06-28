@@ -87,8 +87,8 @@ class ResourceListRow extends React.Component {
 
           <div className="resource-item__average-rating">
             {averageRating !== null ? (
-              <div style={{display: 'flex'}}>
-                <span style={{fontSize: '13px', fontWeight: 'bold', color: '#888', margin: '11px 12px auto' }}>AVERAGE RATING</span>
+              <div style={{display: 'flex', margin: '8px 0'}}>
+                <span style={{fontSize: '13px', fontWeight: 'bold', color: '#888', margin: 'auto 12px' }}>AVERAGE RATING</span>
                 <StarRatingComponent name="AverageRating" value={averageRating} editing={false} />
               </div>
             ) : (

@@ -49,6 +49,7 @@ class StarRatingComponent extends Component {
       float: 'right',
       cursor: editing ? 'pointer' : 'default',
       fontSize: '1.5em',
+      lineHeight: '.5em',
       color: value >= i ? starColor : emptyStarColor
     });
     const radioStyles = {
