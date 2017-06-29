@@ -8,7 +8,6 @@ import course from './courseReducer';
 
 const rootReducer = combineReducers({
   routing: routerReducer,
-  course,
   form: reduxFormReducer,
   resourceSubjects,
   resources,
