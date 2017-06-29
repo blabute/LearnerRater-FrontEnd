@@ -49,11 +49,12 @@ class ResourcePage extends React.Component {
         <ManageCoursePage subject={this.state.resource.subjectTitle} isAddCourseOverlayOpen={this.state.isAddCourseOverlayOpen}
           closeOverlay={this.closeAddCourseOverlay}  />
         {!this.state.isAddCourseOverlayOpen &&
+        <div> 
         <div className="main-title">
           <h2><span style={mainTitleStyle}><i className="fa fa-chevron-left sm-query-hide" /><Link to="/">Subjects</Link> /&nbsp;</span> {this.state.resource.subjectTitle} <div className="badge">{resources.length}</div></h2>
           <button type="button" onClick={this.openAddCourseOverlay} className="btn"><i className="fa fa-plus" /> ADD RESOURCE LINK</button>
         </div>
-        }
+
 
         <div className="sort-bar">
           <a href="#">NAME<i className="fa fa-chevron-down" /></a>
@@ -61,7 +62,8 @@ class ResourcePage extends React.Component {
         </div>
 
         <ResourceList resources={resources} animationDuration={250}/>
-
+        </div>
+      }
 
 
       </div>

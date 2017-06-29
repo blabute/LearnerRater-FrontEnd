@@ -4,7 +4,6 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import resourceSubjects from './resourceSubjectReducer';
 import resources from './resourceReducer';
 import userInterface from './userInterfaceReducer';
-import course from './courseReducer';
 
 const rootReducer = combineReducers({
   routing: routerReducer,
