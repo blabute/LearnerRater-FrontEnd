@@ -18,10 +18,11 @@ class ResourcePage extends React.Component {
       resource: {subjectTitle: props.params.subject},
       isAddCourseOverlayOpen: false
     };
-    this.props.actions.loadResources(this.state.resource.subjectTitle);
+    this.load_Resources(this.state.resource.subjectTitle);
 
     this.openAddCourseOverlay = this.openAddCourseOverlay.bind(this);
     this.closeAddCourseOverlay = this.closeAddCourseOverlay.bind(this);
+    this.load_Resources = this.load_Resources.bind(this);
   }
 
   openAddCourseOverlay() {
@@ -30,6 +31,10 @@ class ResourcePage extends React.Component {
 
   closeAddCourseOverlay() {
     this.setState({isAddCourseOverlayOpen: false});
+  }
+
+  load_Resources(subjectTitle){
+  this.props.actions.loadResources(subjectTitle);
   }
 
   render() {
@@ -47,9 +52,9 @@ class ResourcePage extends React.Component {
       <div>
         <Header/>
         <ManageCoursePage subject={this.state.resource.subjectTitle} isAddCourseOverlayOpen={this.state.isAddCourseOverlayOpen}
-          closeOverlay={this.closeAddCourseOverlay}  />
+          closeOverlay={this.closeAddCourseOverlay} load_Resources={this.load_Resources} />
         {!this.state.isAddCourseOverlayOpen &&
-        <div> 
+        <div>
         <div className="main-title">
           <h2><span style={mainTitleStyle}><i className="fa fa-chevron-left sm-query-hide" /><Link to="/">Subjects</Link> /&nbsp;</span> {this.state.resource.subjectTitle} <div className="badge">{resources.length}</div></h2>
           <button type="button" onClick={this.openAddCourseOverlay} className="btn"><i className="fa fa-plus" /> ADD RESOURCE LINK</button>
