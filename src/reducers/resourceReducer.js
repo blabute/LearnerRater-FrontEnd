@@ -1,25 +1,6 @@
 import * as types from  '../actions/actionTypes';
 import reviewReducer from './reviewReducer';
 
-function returnJson(data){
-  const {Category="",Title="", Author="", Description="", Website="", URL="", Username="", Rating="", Comment=""} = data;
-  const dataJson = {
-        "Author":Author,
-        "Category":Category,
-        "Description":Description,
-        "Reviews":[{
-            "Comment":Comment,
-            "Rating":Rating,
-            "Username":Username
-          }
-        ],
-        "Title":Title,
-        "URL":URL,
-        "Website":Website
-      };
-  return (dataJson);
-}
-
 export default function resourceReducer(state = [], action) {
   switch (action.type) {
     case types.LOAD_RESOURCES_SUCCESS:
@@ -43,6 +24,7 @@ export default function resourceReducer(state = [], action) {
       return updatedState;
     }
     case types.CREATE_COURSE_SUCCESS:
+    debugger;
       return [...state,
         Object.assign({}, returnJson(action.course))
       ];
