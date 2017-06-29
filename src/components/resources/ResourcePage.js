@@ -52,7 +52,7 @@ class ResourcePage extends React.Component {
       <div>
         <Header/>
         <ManageCoursePage subject={this.state.resource.subjectTitle} isAddCourseOverlayOpen={this.state.isAddCourseOverlayOpen}
-          closeOverlay={this.closeAddCourseOverlay} load_Resources={this.load_Resources} />
+          closeOverlay={this.closeAddCourseOverlay} />
         {!this.state.isAddCourseOverlayOpen &&
         <div>
         <div className="main-title">

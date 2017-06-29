@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { reduxForm, SubmissionError } from 'redux-form';
 import * as courseActions from '../../actions/courseActions';
+import { browserHistory } from 'react-router';
 
 class ManageCoursePage extends React.Component {
 
@@ -31,7 +32,7 @@ class ManageCoursePage extends React.Component {
 
   onSubmitClick (values) {
     //debugger;
-  const { closeOverlay, subject, load_Resources} = this.props;
+  const { closeOverlay, subject} = this.props;
   const {Category="React",Title="", Author="", Description="", Website="", URL="", Username="", Rating=""} = values;
 
     let error={};
@@ -82,12 +83,15 @@ class ManageCoursePage extends React.Component {
       throw new SubmissionError(error);
     }
      else{
-       if (subject!==Category)
-       {
-        load_Resources(Category);
-       }
-       this.props.actions.saveCourse(Category);
+      this.props.actions.saveCourse();
+      if (subject!==Category)
+      {
+       browserHistory.push('/resources/'+Category);
+       window.location.reload();
+      }
+      else {
        closeOverlay();
+      }
      }
   }
 
@@ -112,7 +116,6 @@ ManageCoursePage.propTypes = {
   isAddCourseOverlayOpen: PropTypes.bool,
   handleSubmit: PropTypes.func,
   title: PropTypes.string,
-  load_Resources:PropTypes.func,
   subject: PropTypes.string
 };
 

@@ -3,7 +3,15 @@ import $ from 'jquery';
 
 class CourseApi {
 
-  static saveCourse(category, course) {
+  static deleteCourse(resourceId) {
+
+    return $.ajax({
+      type: "DELETE",
+      url: `${constants.REST_SERVICE_URL}DeleteResource?resourceid=${resourceId}`
+    });
+  }
+
+  static saveCourse(course) {
       const {Category="",Title="", Author="", Description="", Website="", URL="", Username="", Rating="", Comment=""} = course;
       const dataJson = {
             "Author":Author,
@@ -32,6 +40,8 @@ class CourseApi {
     }
 
   }
+
+
 
 
 export default CourseApi;
