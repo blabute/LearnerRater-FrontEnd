@@ -31,7 +31,7 @@ class ManageCoursePage extends React.Component {
 
   onSubmitClick (values) {
     //debugger;
-  const { closeOverlay } = this.props;
+  const { closeOverlay, subject, load_Resources} = this.props;
   const {Category="React",Title="", Author="", Description="", Website="", URL="", Username="", Rating=""} = values;
 
     let error={};
@@ -82,17 +82,21 @@ class ManageCoursePage extends React.Component {
       throw new SubmissionError(error);
     }
      else{
+       if (subject!==Category)
+       {
+        load_Resources(Category);
+       }
        this.props.actions.saveCourse(Category);
        closeOverlay();
      }
   }
 
   render() {
-    const {resourceSubjects, isAddCourseOverlayOpen, title, handleSubmit} = this.props;
+    const {isAddCourseOverlayOpen, title, handleSubmit, resourceSubjects, subject} = this.props;
     return (
       <div>
         {isAddCourseOverlayOpen &&
-        <CoursePage onStarClick={this.onStarClick} resourceSubjects={resourceSubjects} onCancelClick={this.onCancelClick} onSubmitClick={this.onSubmitClick}
+        <CoursePage subjectTitle={subject} onStarClick={this.onStarClick} resourceSubjects={resourceSubjects} onCancelClick={this.onCancelClick} onSubmitClick={this.onSubmitClick}
         handleSubmit={handleSubmit} title={title}/>
         }
       </div>
@@ -107,7 +111,9 @@ ManageCoursePage.propTypes = {
   actions: PropTypes.object.isRequired,
   isAddCourseOverlayOpen: PropTypes.bool,
   handleSubmit: PropTypes.func,
-  title: PropTypes.string
+  title: PropTypes.string,
+  load_Resources:PropTypes.func,
+  subject: PropTypes.string
 };
 
 function mapStateToProps (state){
