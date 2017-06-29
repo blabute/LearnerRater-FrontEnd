@@ -15,9 +15,8 @@ class ManageButton extends React.Component {
     this.props.actions.toggleCanDelete();
   }
 
-  render() {    
-    let btnStyle = {backgroundColor: this.props.canDelete? "red": "" };
-    debugger;
+  render() {
+    let btnStyle = {backgroundColor: this.props.canDelete? "red": "" };    
     return (
       <div className="manage-btn-container"  >
         <button type="button" className="btn" onClick={this.onManageClick} id="btnToggleManage" style = {btnStyle}>Manage</button>
