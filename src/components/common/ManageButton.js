@@ -8,7 +8,6 @@ class ManageButton extends React.Component {
 
   constructor() {
     super();
-
     this.onManageClick = this.onManageClick.bind(this);
   }
 
@@ -16,18 +15,20 @@ class ManageButton extends React.Component {
     this.props.actions.toggleCanDelete();
   }
 
-  render() {
-
+  render() {    
+    let btnStyle = {backgroundColor: this.props.canDelete? "red": "" };
+    debugger;
     return (
-      <div className="manage-btn-container">
-        <button type="button" className="btn" onClick={this.onManageClick} id="btnToggleManage">Manage</button>
+      <div className="manage-btn-container"  >
+        <button type="button" className="btn" onClick={this.onManageClick} id="btnToggleManage" style = {btnStyle}>Manage</button>
       </div>
     );
   }
 }
 
 ManageButton.propTypes = {
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  canDelete: PropTypes.bool
 };
 
 function mapDispatchToProps(dispatch) {
@@ -36,4 +37,10 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(ManageButton);
+function mapStateToProps(state){
+  return {
+    canDelete: state.userInterface.canDelete
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManageButton);
