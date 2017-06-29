@@ -25,18 +25,6 @@
 
   }
 
-  input[type="text"] {
-
-
-
-  }
-
-
-  select {
-
-
-
-  }
 
   textarea {
 
@@ -63,7 +51,6 @@
       justify-content: flex-end;
       margin-right: 14px;
 
-
     }
 
     .answer {
@@ -86,7 +73,6 @@
     }
 
 
-
     label {
 
       color: #555;
@@ -107,16 +93,7 @@
       padding-left: 8px;
       white-space: nowrap;
 
-      //display: flex;
-
-
       .fa { color: red; }
-
-    }
-
-    input,
-    textarea,
-    select {
 
     }
 
@@ -172,4 +149,4 @@
 
     }
 
-  }
+  } // button.btn

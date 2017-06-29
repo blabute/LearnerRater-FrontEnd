@@ -1,0 +1,33 @@
+
+//------------------------------------------------------------------------------
+// SORT BAR
+//------------------------------------------------------------------------------
+
+  .sort-bar {
+
+    display: flex;
+    background-color: #e6e6e6;
+    color: #96969b;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 14px 60px;
+
+    a {
+
+      display: flex;
+      text-decoration: none;
+      color: #96969b;
+
+      &:last-of-type { margin-left: auto; }
+
+    }
+
+    .fa {
+      font-size: 90%;
+      color: #96969b;
+      margin: auto 6px;
+      padding-bottom: 2px;
+    }
+
+  }
