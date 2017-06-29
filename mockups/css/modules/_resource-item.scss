@@ -1,0 +1,152 @@
+
+//------------------------------------------------------------------------------
+//  RESOURCE ITEM
+//------------------------------------------------------------------------------
+
+  .resource-list-container { padding: 0 60px 25px; }
+
+
+  .resource-item {
+
+    display: flex;
+    flex-wrap: wrap;
+    margin: 25px auto 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #ddd;
+
+
+    &__col-1 {
+
+      //display: flex;
+
+      flex: 3;
+
+    }
+
+    &__col-2 {
+
+      flex: 1;
+      margin: auto;
+      padding-bottom: 16px;
+      padding-left: 20px;
+
+      //margin-left: auto;
+      //margin-bottom: 16px;
+
+    }
+
+
+    // Resource Item Title
+    &__title {
+
+      .fa {
+        margin-right: 8px;
+        color: #18acdf;
+       }
+
+      h1 {
+        color: #18acdf;
+        text-decoration: underline;
+        font-size: 1.6em;
+        margin: 0;
+      }
+
+      &:hover h1 {
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      a, a:hover, a:visited {
+
+        color: #18acdf;
+
+        &:hover { text-decoration: none; }
+
+      }
+
+    } // __title
+
+
+    // Resource Item Footer
+    &__footer {
+
+      display: flex;
+      flex-wrap: wrap;
+
+    }
+
+
+    &__credentials {
+
+      display: flex;
+      background-color: #efeff5;
+      border: 1px solid #dadae1;
+      border-radius: 3px;
+      padding: 0 5px;
+      margin-right: 20px;
+      margin-bottom: 16px;
+
+      .title {
+        margin: 7px 5px;
+        align-items: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        //padding: 8px 14px;
+        font-size: 14px;
+        color: #888;
+      }
+
+      .divider {
+        margin: auto 10px;
+        align-items: center;
+        border-right: 1px solid #cacac1;
+        display: block;
+        height: 20px;
+      }
+
+      .value {
+        margin: auto 5px;
+        align-items: center;
+        color: #3d3d40;
+        font-size: 15px;
+      }
+
+    }
+
+
+    &__average-rating {
+      display: flex;
+      justify-content: flex-end;
+      margin: auto 0 auto auto;
+      min-width: 232px;
+    }
+
+
+    &__btn-review {
+      text-align: right;
+      margin-top: 12px;
+    }
+
+    &__btn-toggle-reviews { margin-bottom: 16px; }
+
+
+  } // .resource-item
+
+
+
+
+
+
+  @media screen and (max-width: 800px) {
+
+    .resource-list-container { padding-right: 40px; }
+
+  }
+
+
+
+  @media screen and (max-width: 600px) {
+
+    .resource-list-container { padding-right: 20px; }
+
+  }

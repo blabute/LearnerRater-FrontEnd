@@ -13,11 +13,13 @@
 
 @import "modules/_main-titlebar.scss";
 
-//@import "_subject-tiles.scss";
+@import "modules/_subject-tiles.scss";
 
 @import "modules/_badge.scss";
 
 @import "modules/_sort-bar.scss";
+
+@import "modules/_resource-item.scss";
 
 @import "_forms.scss";
 
