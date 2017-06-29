@@ -92,11 +92,11 @@ class ManageCoursePage extends React.Component {
   }
 
   render() {
-    const {isAddCourseOverlayOpen, title, handleSubmit, resourceSubjects} = this.props;
+    const {isAddCourseOverlayOpen, title, handleSubmit, resourceSubjects, subject} = this.props;
     return (
       <div>
         {isAddCourseOverlayOpen &&
-        <CoursePage onStarClick={this.onStarClick} resourceSubjects={resourceSubjects} onCancelClick={this.onCancelClick} onSubmitClick={this.onSubmitClick}
+        <CoursePage subjectTitle={subject} onStarClick={this.onStarClick} resourceSubjects={resourceSubjects} onCancelClick={this.onCancelClick} onSubmitClick={this.onSubmitClick}
         handleSubmit={handleSubmit} title={title}/>
         }
       </div>
