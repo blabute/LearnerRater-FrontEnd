@@ -7,11 +7,11 @@
 
     display: flex;
     background-color: #e6e6e6;
-    color: #96969b;
-    font-weight: bold;
-    font-size: 14px;
-    text-transform: uppercase;
     padding: 14px 60px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #96969b;
+    text-transform: uppercase;
 
     a {
 
@@ -24,10 +24,13 @@
     }
 
     .fa {
-      font-size: 90%;
-      color: #96969b;
+
       margin: auto 6px;
       padding-bottom: 2px;
+      font-size: 90%;
+      color: #96969b;
+
     }
+
 
   }
