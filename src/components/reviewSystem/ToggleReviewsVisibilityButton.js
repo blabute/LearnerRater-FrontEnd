@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 const ToggleReviewsVisibilityButton = props => {
 
   const { numberOfReviews, areReviewsVisible, onClick } = props;
+  const disabled = (numberOfReviews == 0);
+  const divStyle = {display:!disabled?'block':'none'};
 
   return (
-    <div className="resource-item__btn-toggle-reviews">
+    <div className="resource-item__btn-toggle-reviews" style={divStyle} >
       <button className="btn btn--light" onClick={onClick} id="btnToggleReviewVisibility">
         {areReviewsVisible ? (
           <div>
