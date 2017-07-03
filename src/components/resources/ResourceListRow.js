@@ -7,6 +7,9 @@ import StarRatingComponent from '../common/StarRatingComponent';
 import { computeAverage } from '../../utils/mathHelper';
 import ToggleReviewsVisibilityButton from '../reviewSystem/ToggleReviewsVisibilityButton';
 import $ from 'jquery';
+import * as courseActions from '../../actions/courseActions';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 class ResourceListRow extends React.Component {
 
@@ -33,10 +36,10 @@ class ResourceListRow extends React.Component {
   }
 
   deleteCourse(){
-    const { resource, delete_Resources} = this.props;
+    const { resource } = this.props;
     const r = confirm("Do you want to delete this resource?");
     if (r == true) {
-      {delete_Resources(resource.ID)}
+      this.props.actions.deleteCourse(resource.ID);
     }
   }
 
@@ -130,7 +133,14 @@ class ResourceListRow extends React.Component {
 ResourceListRow.propTypes = {
   resource: PropTypes.object.isRequired,
   animationDuration: PropTypes.number,
-  delete_Resources:PropTypes.func
+  actions: PropTypes.object.isRequired
+
 };
 
-export default ResourceListRow;
+function mapDispatchToProps(dispatch){
+  return {
+    actions:bindActionCreators(courseActions, dispatch)
+  };
+}
+
+export default connect(null,mapDispatchToProps)(ResourceListRow);

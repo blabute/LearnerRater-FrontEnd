@@ -38,11 +38,6 @@ class ResourcePage extends React.Component {
   this.props.actions.loadResources(subjectTitle);
   }
 
-  delete_Resources(ResourcesID){
-    alert(ResourcesID);
-  this.props.actions.deleteCourse(ResourcesID);
-  }
-
   render() {
 
     const mainTitleStyle = {
@@ -72,7 +67,7 @@ class ResourcePage extends React.Component {
           <a href="#"><i className="fa fa-chevron-up" />AVERAGE RATING</a>
         </div>
 
-        <ResourceList delete_Resources={this.delete_Resources} resources={resources} animationDuration={250}/>
+        <ResourceList resources={resources} animationDuration={250}/>
         </div>
       }
 
