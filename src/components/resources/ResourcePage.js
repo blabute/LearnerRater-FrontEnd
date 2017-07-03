@@ -7,6 +7,7 @@ import * as resourceActions from '../../actions/resourceActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import ManageCoursePage from '../addCourses/ManageCoursePage';
+import * as courseActions from '../../actions/courseActions';
 
 
 class ResourcePage extends React.Component {
@@ -37,6 +38,11 @@ class ResourcePage extends React.Component {
   this.props.actions.loadResources(subjectTitle);
   }
 
+  delete_Resources(ResourcesID){
+    alert(ResourcesID);
+  this.props.actions.deleteCourse(ResourcesID);
+  }
+
   render() {
 
     const mainTitleStyle = {
@@ -57,7 +63,7 @@ class ResourcePage extends React.Component {
         <div>
         <div className="main-title">
           <h2><span style={mainTitleStyle}><i className="fa fa-chevron-left sm-query-hide" /><Link to="/">Subjects</Link> /&nbsp;</span> {this.state.resource.subjectTitle} <div className="badge">{resources.length}</div></h2>
-          <button type="button" onClick={this.openAddCourseOverlay} className="btn"><i className="fa fa-plus" /> ADD RESOURCE LINK</button>
+          <button type="button" onClick={this.openAddCourseOverlay} className="btn"><i className="fa fa-plus" id="btnAddCourse"/> ADD RESOURCE LINK</button>
         </div>
 
 
@@ -66,7 +72,7 @@ class ResourcePage extends React.Component {
           <a href="#"><i className="fa fa-chevron-up" />AVERAGE RATING</a>
         </div>
 
-        <ResourceList resources={resources} animationDuration={250}/>
+        <ResourceList delete_Resources={this.delete_Resources} resources={resources} animationDuration={250}/>
         </div>
       }
 
@@ -93,7 +99,7 @@ function mapStateToProps (state, ownProps){
 
 function mapDispatchToProps(dispatch){
   return {
-    actions:bindActionCreators(resourceActions, dispatch)
+    actions:bindActionCreators({...courseActions,...resourceActions}, dispatch)
   };
 }
 

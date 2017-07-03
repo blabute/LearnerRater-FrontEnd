@@ -21,6 +21,7 @@ class ResourceListRow extends React.Component {
     this.openAddReviewOverlay = this.openAddReviewOverlay.bind(this);
     this.closeAddReviewOverlay = this.closeAddReviewOverlay.bind(this);
     this.toggleReviewList = this.toggleReviewList.bind(this);
+    this.deleteCourse = this.deleteCourse.bind(this);
   }
 
   openAddReviewOverlay() {
@@ -29,6 +30,14 @@ class ResourceListRow extends React.Component {
 
   closeAddReviewOverlay() {
     this.setState({isAddReviewOverlayOpen: false});
+  }
+
+  deleteCourse(){
+    const { resource, delete_Resources} = this.props;
+    const r = confirm("Do you want to delete this resource?");
+    if (r == true) {
+      {delete_Resources(resource.ID)}
+    }
   }
 
   toggleReviewList() {
@@ -48,7 +57,7 @@ class ResourceListRow extends React.Component {
     return (
       <div className="resource-item">
 
-      <div className="manage-delete manage-delete--resource">
+      <div className="manage-delete manage-delete--resource" onClick={this.deleteCourse} id={resource.ID}>
         <i className="fa fa-trash-o" />
       </div>
 
@@ -120,7 +129,8 @@ class ResourceListRow extends React.Component {
 
 ResourceListRow.propTypes = {
   resource: PropTypes.object.isRequired,
-  animationDuration: PropTypes.number
+  animationDuration: PropTypes.number,
+  delete_Resources:PropTypes.func
 };
 
 export default ResourceListRow;
