@@ -45,6 +45,10 @@ export default function resourceReducer(state = [], action) {
       return [...state,
         Object.assign({}, returnJson(action.course))
       ];
+    case types.DELETE_COURSE_SUCCESS:
+        return [
+          ...state.filter(course => course.ID !== action.courseId)
+        ];
     default:
       return state;
   }
