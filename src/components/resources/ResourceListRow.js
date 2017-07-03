@@ -141,7 +141,7 @@ function mapStateToProps (state){
   //debugger;
   //const subjectName = ownProps.params.subject;
   return {
-    resources: state.resources,
+    resources: state.resources
     //subject: subjectName
   };
 }
