@@ -8,8 +8,8 @@ const ResourceList = props => {
 
   return (
     <div className="resource-list-container">
-      {resources.map(resource =>
-        <ResourceListRow key={resource.ID} resource={resource} animationDuration={animationDuration}/>
+      {resources.map((resource, index) =>
+        <ResourceListRow key={resource.ID} resource={resource} index={index} animationDuration={animationDuration}/>
       )}
     </div>
   );

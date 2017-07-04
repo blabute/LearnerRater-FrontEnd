@@ -53,14 +53,14 @@ class ResourceListRow extends React.Component {
 
   render() {
 
-    const { resource } = this.props;
+    const { resource, index } = this.props;
     const listOfRatings = resource.Reviews.map(review => review.Rating);
     const averageRating = computeAverage(listOfRatings);
 
     return (
       <div className="resource-item">
 
-      <div className="manage-delete manage-delete--resource" onClick={this.deleteCourse} id={resource.ID}>
+      <div className="manage-delete manage-delete--resource" onClick={this.deleteCourse} id={`deleteResource_${index}`}>
         <i className="fa fa-trash-o" />
       </div>
 
@@ -133,7 +133,8 @@ class ResourceListRow extends React.Component {
 ResourceListRow.propTypes = {
   resource: PropTypes.object.isRequired,
   animationDuration: PropTypes.number,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  index: PropTypes.number
 
 };
 
