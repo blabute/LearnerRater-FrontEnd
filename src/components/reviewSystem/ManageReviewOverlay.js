@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import * as reviewActions from '../../actions/reviewActions';
-import * as userInterfaceActions from '../../actions/userInterfaceActions';
 
 class ManageReviewOverlay extends React.Component {
 
@@ -90,7 +89,7 @@ const postNewReview = reduxForm({
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({...reviewActions, ...userInterfaceActions}, dispatch)
+    actions: bindActionCreators(reviewActions, dispatch)
   };
 }
 

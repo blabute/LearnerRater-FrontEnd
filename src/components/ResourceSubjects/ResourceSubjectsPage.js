@@ -14,10 +14,12 @@ class ResourceSubjectsPage extends React.Component {
   }
 
   render() {
-    const {resourceSubjects} = this.props;
+    const { resourceSubjects } = this.props;
+    const url = this.props.location.pathname;
+
     return (
       <div>
-        <Header/>
+        <Header currentPage={url} />
         <h2 className="section-title">Subjects</h2>
         <ResourceSubjectsList resourceSubjects={resourceSubjects}/>
       </div>
@@ -27,7 +29,8 @@ class ResourceSubjectsPage extends React.Component {
 
 ResourceSubjectsPage.propTypes = {
   resourceSubjects: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  location: PropTypes.object
 };
 
 function mapStateToProps (state){
