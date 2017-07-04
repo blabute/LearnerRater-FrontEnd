@@ -7,8 +7,6 @@ import * as resourceActions from '../../actions/resourceActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import ManageCoursePage from '../addCourses/ManageCoursePage';
-import * as courseActions from '../../actions/courseActions';
-
 
 class ResourcePage extends React.Component {
 
@@ -94,7 +92,7 @@ function mapStateToProps (state, ownProps){
 
 function mapDispatchToProps(dispatch){
   return {
-    actions:bindActionCreators({...courseActions,...resourceActions}, dispatch)
+    actions:bindActionCreators(resourceActions, dispatch)
   };
 }
 

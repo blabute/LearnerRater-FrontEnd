@@ -137,19 +137,10 @@ ResourceListRow.propTypes = {
 
 };
 
-function mapStateToProps (state){
-  //debugger;
-  //const subjectName = ownProps.params.subject;
-  return {
-    resources: state.resources
-    //subject: subjectName
-  };
-}
-
 function mapDispatchToProps(dispatch){
   return {
     actions:bindActionCreators(courseActions, dispatch)
   };
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(ResourceListRow);
+export default connect(null,mapDispatchToProps)(ResourceListRow);
