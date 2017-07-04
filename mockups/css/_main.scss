@@ -31,6 +31,29 @@
   position: absolute;
   left: 20px;
 
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 140%;
+
+  &:hover {
+
+    background-color: red;
+    cursor: pointer;
+
+    .fa { color: white; }
+
+  }
+
+  &:active {
+
+    background-color: #c30;
+
+    .fa { color: #c99; }
+
+  }
+
   .fa { color: #f00; }
 
   &--resource {
