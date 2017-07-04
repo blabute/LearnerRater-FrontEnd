@@ -18,12 +18,12 @@ class ManageCoursePage extends React.Component {
     this.onSubmitClick = this.onSubmitClick.bind(this);
   }
   onCancelClick() {
-    const { closeOverlay } = this.props;
+    const { closeOverlay, reset } = this.props;
 
     this.setState({isOverlay: false});
     closeOverlay();
 
-    //return reset();
+    return reset();
   }
 
   onStarClick(nextValue, prevValue, name) {
@@ -32,7 +32,7 @@ class ManageCoursePage extends React.Component {
 
   onSubmitClick (values) {
     //debugger;
-  const { closeOverlay, subject} = this.props;
+  const { closeOverlay, subject, reset} = this.props;
   const {Category="",Title="", Author="", Description="", Website="", URL="", Username="", Rating=""} = values;
 
     let error={};
@@ -64,7 +64,7 @@ class ManageCoursePage extends React.Component {
       isError=true;
     }
     else if (!(URL.includes("http://")) && (!URL.includes("http://"))){
-        error.URL="URL link should start with http:// OR https://";
+        error.URL=" URL link should start with http:// OR https://";
         isError=true;
       }
 
@@ -91,6 +91,7 @@ class ManageCoursePage extends React.Component {
       }
       else {
        closeOverlay();
+       reset();
       }
      }
   }
@@ -116,7 +117,8 @@ ManageCoursePage.propTypes = {
   isAddCourseOverlayOpen: PropTypes.bool,
   handleSubmit: PropTypes.func,
   title: PropTypes.string,
-  subject: PropTypes.string
+  subject: PropTypes.string,
+  reset: PropTypes.func
 };
 
 function mapStateToProps (state,ownProps){
