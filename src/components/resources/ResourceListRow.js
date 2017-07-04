@@ -53,16 +53,17 @@ class ResourceListRow extends React.Component {
 
   render() {
 
-    const { resource, index } = this.props;
+    const { resource, index ,  canDelete} = this.props;
     const listOfRatings = resource.Reviews.map(review => review.Rating);
     const averageRating = computeAverage(listOfRatings);
 
     return (
       <div className="resource-item">
 
-      <div className="manage-delete manage-delete--resource" onClick={this.deleteCourse} id={`deleteResource_${index}`}>
+      {canDelete && <div className="manage-delete manage-delete--resource" onClick={this.deleteCourse} id={`deleteResource_${index}`}>
         <i className="fa fa-trash-o" />
       </div>
+      }
 
         <div className="resource-item__col-1">
 
@@ -134,9 +135,16 @@ ResourceListRow.propTypes = {
   resource: PropTypes.object.isRequired,
   animationDuration: PropTypes.number,
   actions: PropTypes.object.isRequired,
-  index: PropTypes.number
+  index: PropTypes.number,
+  canDelete: PropTypes.bool
 
 };
+
+function mapStateToProps(state) {
+  return {
+    canDelete: state.userInterface.canDelete
+  };
+}
 
 function mapDispatchToProps(dispatch){
   return {
@@ -144,4 +152,4 @@ function mapDispatchToProps(dispatch){
   };
 }
 
-export default connect(null,mapDispatchToProps)(ResourceListRow);
+export default connect(mapStateToProps,mapDispatchToProps)(ResourceListRow);
