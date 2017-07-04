@@ -15,9 +15,9 @@ class CoursePage extends React.Component {
   }
 
   render() {
-    const {onStarClick, handleSubmit,resourceSubjects, onCancelClick, onSubmitClick, subjectTitle} = this.props;
+    const {onStarClick, handleSubmit,resourceSubjects, onCancelClick, onSubmitClick} = this.props;
     const ddOptions = resourceSubjects.map((resourceSubject) =>
-    <option key={resourceSubject.Category} value={resourceSubject.Category} selected={subjectTitle === resourceSubject.Category}>{resourceSubject.Category}</option>);
+    <option key={resourceSubject.Category} value={resourceSubject.Category} >{resourceSubject.Category}</option>);
 
     return (
        <form onSubmit={handleSubmit(onSubmitClick)} className="form--add-resource">
@@ -46,8 +46,7 @@ CoursePage.propTypes = {
   handleSubmit:PropTypes.func,
   resourceSubjects:PropTypes.array.isRequired,
   onCancelClick:PropTypes.func,
-  onSubmitClick:PropTypes.func,
-  subjectTitle:PropTypes.string
+  onSubmitClick:PropTypes.func
 };
 
 export default CoursePage;

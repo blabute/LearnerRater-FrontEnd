@@ -33,16 +33,11 @@ class ManageCoursePage extends React.Component {
   onSubmitClick (values) {
     //debugger;
   const { closeOverlay, subject} = this.props;
-  const {Category="React",Title="", Author="", Description="", Website="", URL="", Username="", Rating=""} = values;
+  const {Category="",Title="", Author="", Description="", Website="", URL="", Username="", Rating=""} = values;
 
     let error={};
     let isError=false;
     const errMsgRequired=" Required";
-    if (Category.trim()===""){
-      error.Category=errMsgRequired;
-      isError=true;
-
-    }
     if (Title.trim()===""){
       error.Title=errMsgRequired;
       isError=true;
@@ -124,9 +119,12 @@ ManageCoursePage.propTypes = {
   subject: PropTypes.string
 };
 
-function mapStateToProps (state){
+function mapStateToProps (state,ownProps){
   return {
-    resourceSubjects: state.resourceSubjects
+    resourceSubjects: state.resourceSubjects,
+    initialValues:{
+      Category:ownProps.subject
+    }
   };
 }
 
