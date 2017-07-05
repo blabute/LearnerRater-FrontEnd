@@ -134,6 +134,7 @@
     &--delete-review {
       background-color: #fff;
       border-radius: 50%;
+      //border: 1px solid #fff;
       width: 29px;
       height: 29px;
       padding: 4px;
@@ -141,12 +142,67 @@
       line-height: 0;
       margin-right: 12px;
 
-      &:hover .fa { color: #c30; }
+      transition: all 0.2s ease;
 
-      &:active { background-color: rgba(0,0,0,.3); }
+      &:hover {
+
+        background-color: red;
+
+
+        .fa { color: #fff; }
+
+      }
+
+
+      //&:active { background-color: rgba(0,0,0,.3); }
+      &:active { background-color: #900; }
 
       .fa { color: red; }
 
     }
 
   } // button.btn
+
+
+
+  .manage-delete {
+
+    position: absolute;
+    left: 20px;
+
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 140%;
+
+    border: 1px solid red;
+
+    &:hover {
+
+      background-color: red;
+      cursor: pointer;
+
+      .fa { color: white; }
+
+    }
+
+    &:active {
+
+  //    background-color: rgba(0,0,0,.7);
+      background-color: #900;
+      border-color: #900;
+
+      .fa { color: #fff; }
+
+    }
+
+    .fa { color: #f00; }
+
+    &--resource {
+
+      font-size: 1.4em;
+
+    }
+
+  }
