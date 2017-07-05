@@ -31,6 +31,11 @@ class ManageReviewOverlay extends React.Component {
       errors.Username = errMsgRequired;
       isError = true;
     }
+    else if (Username.length>50){
+      errors.Username = " Exceeded max field size";
+      isError = true;
+    }
+    
     if (!Rating){
       errors.Rating = errMsgRequired;
       isError = true;

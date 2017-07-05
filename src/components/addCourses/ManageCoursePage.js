@@ -34,20 +34,28 @@ class ManageCoursePage extends React.Component {
     //debugger;
   const { closeOverlay, subject, reset} = this.props;
   const {Category="",Title="", Author="", Description="", Website="", URL="", Username="", Rating=""} = values;
-
     let error={};
     let isError=false;
     const errMsgRequired=" Required";
+    const errMaxSize=" Exceeded max field size";
     if (Title.trim()===""){
       error.Title=errMsgRequired;
       isError=true;
-
     }
+    else if (Title.length>100){
+      error.Title=errMaxSize;
+      isError=true;
+    }
+
     if (Author.trim()===""){
       error.Author=errMsgRequired;
       isError=true;
-
     }
+    else if (Author.length>50){
+      error.Author=errMaxSize;
+      isError=true;
+    }
+
     if (Description.trim()===""){
       error.Description=errMsgRequired;
       isError=true;
@@ -56,7 +64,10 @@ class ManageCoursePage extends React.Component {
     if (Website.trim()===""){
       error.Website=errMsgRequired;
       isError=true;
-
+    }
+    else if (Website.length>50){
+      error.Website=errMaxSize;
+      isError=true;
     }
 
     if (URL.trim()===""){
@@ -67,11 +78,17 @@ class ManageCoursePage extends React.Component {
         error.URL=" URL link should start with http:// OR https://";
         isError=true;
       }
-
+      else if (URL.length>300){
+          error.URL=errMaxSize;
+          isError=true;
+        }
     if (Username.trim()===""){
           error.Username=errMsgRequired;
           isError=true;
-
+    }
+    else if (Username.length>50){
+          error.Username=errMaxSize;
+          isError=true;
     }
     if (Rating < 1){
           error.Rating=errMsgRequired;
