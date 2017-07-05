@@ -63,7 +63,7 @@ class ManageCoursePage extends React.Component {
       error.URL=errMsgRequired;
       isError=true;
     }
-    else if (!(URL.includes("http://")) && (!URL.includes("http://"))){
+    else if (!(URL.includes("http://")) && (!URL.includes("https://"))){
         error.URL=" URL link should start with http:// OR https://";
         isError=true;
       }
