@@ -60,15 +60,17 @@ class ResourceListRow extends React.Component {
     return (
       <div className="resource-item">
 
-      {canDelete && <div className="manage-delete manage-delete--resource" onClick={this.deleteCourse} id={`deleteResource_${index}`}>
-        <i className="fa fa-trash-o" />
-      </div>
-      }
 
         <div className="resource-item__col-1">
 
           <div className="resource-item__title">
             <h1 className="resource-title">
+
+            {canDelete && <div className="manage-delete manage-delete--resource" onClick={this.deleteCourse} id={`deleteResource_${index}`}>
+              <i className="fa fa-trash-o" />
+            </div>
+            }
+
               <i className="fa fa-graduation-cap" aria-hidden="true" />
               <a href={resource.URL} target="_blank">{resource.Title}</a>
             </h1>

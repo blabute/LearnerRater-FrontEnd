@@ -34,3 +34,19 @@
 
 
   }
+
+
+
+
+  @media screen and (max-width: 800px) {
+
+    .sort-bar { padding: 14px 40px; }
+
+  }
+
+
+  @media screen and (max-width: 600px) {
+
+    .sort-bar { padding: 14px 20px; }
+
+  }

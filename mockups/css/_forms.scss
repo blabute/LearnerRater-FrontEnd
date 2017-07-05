@@ -167,16 +167,28 @@
 
   .manage-delete {
 
-    position: absolute;
-    left: 20px;
+//    position: absolute;
+//    left: 20px;
+//    width: 32px;
+//    height: 32px;
+//    border-radius: 50%;
+//    text-align: center;
+//    line-height: 140%;
+//    background-color: #fff;
+//
+//    border: 1px solid red;
 
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 140%;
+position: absolute;
+width: 36px;
+height: 36px;
+border-radius: 50%;
+text-align: center;
+background-color: #fff;
+border: 1px solid red;
+left: -1px;
+top: -2px;
+line-height: 133%;
 
-    border: 1px solid red;
 
     &:hover {
 
@@ -189,7 +201,6 @@
 
     &:active {
 
-  //    background-color: rgba(0,0,0,.7);
       background-color: #900;
       border-color: #900;
 
@@ -197,11 +208,16 @@
 
     }
 
-    .fa { color: #f00; }
+    .fa {
+
+      margin: auto;
+      color: #f00;
+
+    }
 
     &--resource {
 
-      font-size: 1.4em;
+//      font-size: 1.4em;
 
     }
 
