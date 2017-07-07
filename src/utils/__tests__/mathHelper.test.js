@@ -1,7 +1,7 @@
 import { computeAverage } from '../mathHelper';
 import { expect } from 'chai';
 
-describe('reviewHelper', () => {
+describe('mathHelper', () => {
 
   describe('computeAverage', () => {
 

@@ -55,7 +55,17 @@ class ResourcePage extends React.Component {
         {!this.state.isAddCourseOverlayOpen &&
         <div>
         <div className="main-title">
-          <h2><span style={mainTitleStyle}><i className="fa fa-chevron-left sm-query-hide" /><Link to="/">Subjects</Link> /&nbsp;</span> {this.state.resource.subjectTitle} <div className="badge">{resources.length}</div></h2>
+          <h2>
+            <span style={mainTitleStyle}>
+              <i className="fa fa-chevron-left sm-query-hide" />
+              <Link to="/">Subjects</Link>
+              /&nbsp;
+            </span>
+            {this.state.resource.subjectTitle}
+            <div className="badge" id={`numberOfReviewsBadge`}>
+              {resources.length}
+            </div>
+          </h2>
           <button type="button" onClick={this.openAddCourseOverlay} className="btn"><i className="fa fa-plus" id="btnAddCourse"/> ADD RESOURCE LINK</button>
         </div>
 
