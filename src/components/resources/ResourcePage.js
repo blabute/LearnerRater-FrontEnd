@@ -109,7 +109,7 @@ class ResourcePage extends React.Component {
               /&nbsp;
             </span>
             {this.state.resource.subjectTitle}
-            <div className="badge" id={`numberOfReviewsBadge`}>
+            <div className="badge" id={`numberOfResourcesBadge`}>
               {resources.length}
             </div>
           </h2>

@@ -7,7 +7,7 @@ const ResourceSubjectsListRow = ({resourceSubject}) => {
   return (
     <Link to={'/resources/' + resourceSubject.Category}  className="subject-tile">
       <h1>{resourceSubject.Category}</h1>
-      <div className="badge" id={`numberOfReviewsBadge-${removeSpaces(resourceSubject.Category)}`}>
+      <div className="badge" id={`numberOfResourcesBadge-${removeSpaces(resourceSubject.Category)}`}>
         {resourceSubject.NumberOfResources}
       </div>
     </Link>
