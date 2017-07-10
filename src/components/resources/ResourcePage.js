@@ -105,7 +105,7 @@ class ResourcePage extends React.Component {
           <h2>
             <span style={mainTitleStyle}>
               <i className="fa fa-chevron-left sm-query-hide" />
-              <Link to="/">Subjects</Link>
+              <Link id="backToSubjectsPageButton" to="/">Subjects</Link>
               /&nbsp;
             </span>
             {this.state.resource.subjectTitle}
