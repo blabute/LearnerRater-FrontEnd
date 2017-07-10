@@ -8,20 +8,23 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import ManageCoursePage from '../addCourses/ManageCoursePage';
 
-class ResourcePage extends React.Component {
+const sortDirectionAsc = "asc";
+const sortDirectionDesc = "desc";
 
-  constructor(props, context) {
-    super(props, context);
-    //debugger;
+class ResourcePage extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
       resource: {subjectTitle: props.params.subject},
-      isAddCourseOverlayOpen: false
+      isAddCourseOverlayOpen: false,
+      sortBy: {columnName: "Title", direction: sortDirectionAsc}
     };
     this.load_Resources(this.state.resource.subjectTitle);
 
     this.openAddCourseOverlay = this.openAddCourseOverlay.bind(this);
     this.closeAddCourseOverlay = this.closeAddCourseOverlay.bind(this);
     this.load_Resources = this.load_Resources.bind(this);
+    this.sortBarClick = this.sortBarClick.bind(this);
   }
 
   openAddCourseOverlay() {
@@ -36,8 +39,52 @@ class ResourcePage extends React.Component {
   this.props.actions.loadResources(subjectTitle);
   }
 
-  render() {
+  toggleSortState(columnName){
+    let direction = null;
+    if(this.state.sortBy.direction === sortDirectionAsc) direction = sortDirectionDesc;
+    else direction = sortDirectionAsc;
 
+    const sortBy = {
+      columnName: columnName,
+      direction: direction
+    };
+    this.setState({sortBy:sortBy});
+  }
+
+  getChevronClassname(columnName, sortBy){
+    if(columnName === sortBy.columnName){
+      if(sortBy.direction === sortDirectionAsc)
+        return "fa fa-chevron-up";
+      else return "fa fa-chevron-down";
+    }
+    else return "";
+  }
+
+  compare(sortBy) {
+    let sortOrder = 1;
+    if(sortBy.direction === sortDirectionDesc) sortOrder = -1;
+    return function (a,b) {
+        let result = 0;
+        if(typeof a[sortBy.columnName] === "number" ){
+          result = (parseInt(a[sortBy.columnName]) < parseInt(b[sortBy.columnName])) ? -1 : (parseInt(a[sortBy.columnName]) > parseInt(b[sortBy.columnName])) ? 1 : 0;
+        }
+        else result = (a[sortBy.columnName].toLowerCase() < b[sortBy.columnName].toLowerCase()) ? -1 : (a[sortBy.columnName].toLowerCase() > b[sortBy.columnName].toLowerCase()) ? 1 : 0;
+
+        return result * sortOrder;
+    };
+}
+
+  sortResources(resources, sortBy){
+    let sortedResources = null;
+    sortedResources =[].slice.call(resources).sort(this.compare(sortBy));
+    return sortedResources;
+  }
+
+  sortBarClick(columnName){
+    this.toggleSortState(columnName);
+  }
+
+  render() {
     const mainTitleStyle = {
 
       fontWeight: 'normal',
@@ -45,8 +92,8 @@ class ResourcePage extends React.Component {
 
     };
 
+    let resources = this.sortResources(this.props.resources,this.state.sortBy);
 
-    const {resources} = this.props;
     return (
       <div>
         <Header/>
@@ -71,14 +118,13 @@ class ResourcePage extends React.Component {
 
 
         <div className="sort-bar">
-          <a href="#">NAME<i className="fa fa-chevron-down" /></a>
-          <a href="#"><i className="fa fa-chevron-up" />AVERAGE RATING</a>
+          <a href="#" onClick = {()=>this.sortBarClick("Title")}>NAME<i className={this.getChevronClassname("Title",this.state.sortBy)} /></a>
+          <a href="#" onClick = {()=>this.sortBarClick("AverageRating")}><i className={this.getChevronClassname("AverageRating", this.state.sortBy)} />AVERAGE RATING</a>
         </div>
 
-        <ResourceList resources={resources} animationDuration={250}/>
+        <ResourceList resources={resources} animationDuration={250}  />
         </div>
       }
-
 
       </div>
     );
@@ -92,7 +138,6 @@ ResourcePage.propTypes = {
 };
 
 function mapStateToProps (state, ownProps){
-  //debugger;
   const subjectName = ownProps.params.subject;
   return {
     resources: state.resources,
