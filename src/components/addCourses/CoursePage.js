@@ -15,18 +15,16 @@ class CoursePage extends React.Component {
   }
 
   render() {
-    const {onStarClick, handleSubmit,resourceSubjects, onCancelClick, onSubmitClick} = this.props;
-    const ddOptions = resourceSubjects.map((resourceSubject) =>
-    <option key={resourceSubject.Category} value={resourceSubject.Category} >{resourceSubject.Category}</option>);
+    const { onStarClick, handleSubmit, resourceSubjects, onCancelClick, onSubmitClick } = this.props;
+    // const ddOptions = resourceSubjects.map((resourceSubject) =>
+    // <option key={resourceSubject.Category} value={resourceSubject.Category} >{resourceSubject.Category}</option>);
 
     return (
        <form onSubmit={handleSubmit(onSubmitClick)} className="form--add-resource">
         <div className="main-title">
           <h2>Add Resource Link</h2>
         </div>
-        <CourseForm data=
-          {ddOptions}
-        />
+        <CourseForm dropDownOptions={resourceSubjects}/>
         <ReviewForm onStarClick={onStarClick}/>
         <div className="qbox">
           <div className="question" />

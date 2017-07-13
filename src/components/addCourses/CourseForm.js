@@ -3,9 +3,10 @@ import { Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import renderFieldMandatory from '../common/renderFieldMandatory';
 
-
 const CourseForm = (props) =>  {
-  const {data} = props;
+
+  const {dropDownOptions} = props;
+
   return (
     <div style={{marginTop: '30px'}}>
       <div className="qbox">
@@ -14,7 +15,9 @@ const CourseForm = (props) =>  {
           </div>
           <div className="answer">
           <Field name="Category" component="select" id="category">
-          {data}
+            {dropDownOptions.map((dropDownOption) =>
+              <option key={dropDownOption.Category} value={dropDownOption.Category} >{dropDownOption.Category}</option>
+            )}
           </Field>
         </div>
       </div>
@@ -28,8 +31,7 @@ const CourseForm = (props) =>  {
 };
 
 CourseForm.propTypes = {
-  data:PropTypes.array.isRequired
+  dropDownOptions: PropTypes.array.isRequired
 };
-
 
 export default CourseForm;
