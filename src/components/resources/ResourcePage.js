@@ -118,8 +118,8 @@ class ResourcePage extends React.Component {
 
 
         <div className="sort-bar">
-          <a href="#" onClick = {()=>this.sortBarClick("Title")}>NAME<i className={this.getChevronClassname("Title",this.state.sortBy)} /></a>
-          <a href="#" onClick = {()=>this.sortBarClick("AverageRating")}><i className={this.getChevronClassname("AverageRating", this.state.sortBy)} />AVERAGE RATING</a>
+          <a href="#" onClick = {()=>this.sortBarClick("Title")} id="sortByNameButton">NAME<i className={this.getChevronClassname("Title",this.state.sortBy)} /></a>
+          <a href="#" onClick = {()=>this.sortBarClick("AverageRating")} id="sortByAverageRatingButton"><i className={this.getChevronClassname("AverageRating", this.state.sortBy)} />AVERAGE RATING</a>
         </div>
 
         <ResourceList resources={resources} animationDuration={250}  />
