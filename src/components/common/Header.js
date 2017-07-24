@@ -1,5 +1,6 @@
 import React from 'react';
 import ManageButton from './ManageButton';
+import LoginButton from '../login/LoginButton';
 import PropTypes from 'prop-types';
 
 const Header = props => {
@@ -15,6 +16,7 @@ const Header = props => {
           <h2>So you learned something. Now let us know what you think.</h2>
         </div>
 
+        <LoginButton />
         {currentPage != "/" &&
           <ManageButton />
         }
