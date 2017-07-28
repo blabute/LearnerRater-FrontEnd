@@ -12,7 +12,6 @@ function getResourceSubjectsData(){
 
 class ResourceSubjectApi {
   static getAllResourceSubjects() {
-    //debugger;
     return new Promise ((resolve) => {
       resolve(Object.assign([], getResourceSubjectsData()));
     });

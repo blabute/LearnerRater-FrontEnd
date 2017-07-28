@@ -2,10 +2,11 @@ import React from 'react';
 import ManageButton from './ManageButton';
 import LoginButton from '../login/LoginButton';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 const Header = props => {
 
-  const { currentPage } = props;
+  const { currentPage, areLoggedIn } = props;
 
   return (
     <div>
@@ -17,7 +18,7 @@ const Header = props => {
         </div>
 
         <LoginButton />
-        {currentPage != "/" &&
+        {currentPage != "/" && areLoggedIn &&
           <ManageButton />
         }
 
@@ -27,7 +28,14 @@ const Header = props => {
 };
 
 Header.propTypes = {
-  currentPage: PropTypes.string
+  currentPage: PropTypes.string,
+  areLoggedIn: PropTypes.bool
 };
 
-export default Header;
+function mapStateToProps(state){
+  return {
+    areLoggedIn: state.login.areLoggedIn
+  };
+}
+
+export default connect(mapStateToProps)(Header);

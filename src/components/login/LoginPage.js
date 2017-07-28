@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import * as userInterfaceActions from '../../actions/userInterfaceActions';
 import ManageLoginForm from './ManageLoginForm';
+import { browserHistory } from 'react-router'
 
 class LoginPage extends React.Component {
 

@@ -10,7 +10,6 @@ function getResourcesData(category){
 
 class ResourceApi {
   static getAllResources(category) {
-    //debugger;
     return new Promise ((resolve) => {
       resolve(Object.assign([], getResourcesData(category)));
     });

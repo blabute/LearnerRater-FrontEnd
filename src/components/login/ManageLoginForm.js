@@ -2,29 +2,41 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import * as userInterfaceActions from '../../actions/userInterfaceActions';
+import * as loginActions from '../../actions/loginActions';
 import LoginForm from './LoginForm';
-import { reduxForm } from 'redux-form';
+import { reduxForm, change } from 'redux-form';
+import { browserHistory } from 'react-router';
 
 class ManageLoginForm extends React.Component {
 
   constructor() {
     super();
 
+    this.state = {
+      errorMessage: null
+    };
+
     this.onLoginClick = this.onLoginClick.bind(this);
   }
 
   onLoginClick() {
 
-    this.props.actions.login();
+    const { dispatch, change } = this.props;
+
+    this.props.actions.login()
+      .then(() => browserHistory.goBack())
+        .catch(error => {
+          dispatch(change('Password', ''))
+          this.setState({errorMessage: error.responseText});
+        });
   }
 
   render() {
 
-    const { areLoggedIn } = this.props;
+    const { areLoggedIn, handleSubmit } = this.props;
 
     return (
-      <form>
+      <form onSubmit={handleSubmit(this.onLoginClick)}>
         <div className="qbox" style={{borderBottom: '1px solid #ccc'}}>
           <div className="question">{}</div>
           <div className="answer"><h3>Login</h3></div>
@@ -36,7 +48,7 @@ class ManageLoginForm extends React.Component {
           </div>
         ) : (
           <div>
-            <LoginForm />
+            <LoginForm errorMessage={this.state.errorMessage} />
             <div className="qbox">
               <div className="question">
                 {}
@@ -65,13 +77,16 @@ const postLogin = reduxForm({
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(userInterfaceActions, dispatch)
+    actions: bindActionCreators(loginActions, dispatch)
   };
 }
 
 function mapStateToProps(state){
   return {
-    areLoggedIn: state.userInterface.areLoggedIn
+    areLoggedIn: state.login.areLoggedIn,
+    initialValues: {
+      Username: state.login.username
+    }
   };
 }
 

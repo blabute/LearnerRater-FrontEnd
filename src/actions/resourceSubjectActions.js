@@ -7,7 +7,6 @@ export function loadResourceSubjectsSucess(resourceSubjects) {
 
 export function loadResourceSubjects(){
   return function(dispatch) {
-    //debugger;
     return ResourceSubjectApi.getAllResourceSubjects().then(resourceSubjects => {
       dispatch(loadResourceSubjectsSucess(resourceSubjects));
     }).catch(error => {

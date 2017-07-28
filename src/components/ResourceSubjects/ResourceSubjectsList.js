@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ResourceSubjectsListRow from './ResourceSubjectsListRow';
 
 const ResourceSubjectsList = ({resourceSubjects}) => {
-  //debugger;
   return (
     <section className="subject-tiles">
 

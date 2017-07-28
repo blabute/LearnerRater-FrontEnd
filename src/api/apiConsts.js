@@ -1,1 +1,1 @@
-export const REST_SERVICE_URL = 'http://web5dev:83/LearnerRaterWCF/RESTApi.svc/';
+export const REST_SERVICE_URL = 'http://localhost:42494/RESTApi.svc/';

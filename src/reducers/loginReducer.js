@@ -3,6 +3,10 @@ import initalState from '../constants/initialState';
 
 export default function loginReducer(state = initalState.login, action) {
   switch (action.type) {
+    case types.LOGIN_ATTEMPT:
+      return Object.assign({}, state, {
+        username: action.username
+      });
     case types.LOGIN_SUCCESS:
       return Object.assign({}, state, {
         areLoggedIn: true

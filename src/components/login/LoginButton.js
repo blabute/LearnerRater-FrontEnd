@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import * as userInterfaceActions from '../../actions/userInterfaceActions';
+import * as loginActions from '../../actions/loginActions';
 import { Link } from 'react-router';
+import { browserHistory } from 'react-router'
 
 class LoginButton extends React.Component {
 
@@ -11,12 +12,17 @@ class LoginButton extends React.Component {
     super();
 
     this.onLogoutClick = this.onLogoutClick.bind(this);
+    this.navigateToLoginPage = this.navigateToLoginPage.bind(this);
   }
 
   onLogoutClick() {
     const { actions: { logout } } = this.props;
 
     logout();
+  }
+
+  navigateToLoginPage() {
+    browserHistory.push("/login");
   }
 
   render() {
@@ -29,9 +35,7 @@ class LoginButton extends React.Component {
             Logout
           </button>
         ) : (
-          <button type="button" className="btn" id="btnLogin">
-            <Link to="/login" style={{color: "inherit", textDecoration: "inherit"}} >Login</Link>
-          </button>
+          <button type="button" className="btn" id="btnLogin" onClick={this.navigateToLoginPage}>Login</button>
         )}
       </div>
     );
@@ -45,13 +49,13 @@ LoginButton.propTypes = {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(userInterfaceActions, dispatch)
+    actions: bindActionCreators(loginActions, dispatch)
   };
 }
 
 function mapStateToProps(state){
   return {
-    areLoggedIn: state.userInterface.areLoggedIn
+    areLoggedIn: state.login.areLoggedIn
   };
 }
 

@@ -31,7 +31,6 @@ class ManageCoursePage extends React.Component {
   }
 
   onSubmitClick (values) {
-    //debugger;
   const { closeOverlay, subject, reset} = this.props;
   const {Category="",Title="", Author="", Description="", Website="", URL="", Username="", Rating=""} = values;
     let error={};
