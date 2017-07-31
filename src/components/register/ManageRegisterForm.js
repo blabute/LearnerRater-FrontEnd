@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import * as userActions from '../../actions/userActions';
-import LoginForm from './LoginForm';
+import RegisterForm from './RegisterForm';
 import { reduxForm, change } from 'redux-form';
 import { browserHistory, Link } from 'react-router';
+import validate from './validate';
 
-class ManageLoginForm extends React.Component {
+class ManageRegisterForm extends React.Component {
 
   constructor() {
     super();
@@ -16,15 +17,17 @@ class ManageLoginForm extends React.Component {
       errorMessage: null
     };
 
-    this.onLoginClick = this.onLoginClick.bind(this);
+    this.onRegisterClick = this.onRegisterClick.bind(this);
     this.onCancelClick = this.onCancelClick.bind(this);
   }
 
-  onLoginClick() {
+  onRegisterClick(values) {
 
     const { dispatch, change } = this.props;
 
-    this.props.actions.login()
+    validate(values);
+
+    this.props.actions.register()
       .then(() => browserHistory.goBack())
         .catch(error => {
           dispatch(change('Password', ''))
@@ -41,10 +44,10 @@ class ManageLoginForm extends React.Component {
     const { areLoggedIn, handleSubmit } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.onLoginClick)}>
+      <form onSubmit={handleSubmit(this.onRegisterClick)}>
         <div className="qbox" style={{borderBottom: '1px solid #ccc'}}>
           <div className="question">{}</div>
-          <div className="answer"><h3>Login</h3></div>
+          <div className="answer"><h3>Register</h3></div>
         </div>
 
         {areLoggedIn ? (
@@ -53,7 +56,7 @@ class ManageLoginForm extends React.Component {
           </div>
         ) : (
           <div>
-            <LoginForm />
+            <RegisterForm />
             <div>{this.state.errorMessage}</div>
             <div className="qbox">
               <div className="question">
@@ -61,11 +64,10 @@ class ManageLoginForm extends React.Component {
               </div>
 
               <div className="answer">
-                <button type="submit" className="btn" id="btnSubmitLogin">Login</button>
-                <button type="button" className="btn" id="btnCancelLogin" onClick={this.onCancelClick}>Cancel</button>
+                <button type="submit" className="btn" id="btnSubmitRegister">Register</button>
+                <button type="button" className="btn" id="btnCancelRegister" onClick={this.onCancelClick}>Cancel</button>
               </div>
             </div>
-             Click <Link to="/Register">here</Link> to register
           </div>
         )}
       </form>
@@ -73,14 +75,14 @@ class ManageLoginForm extends React.Component {
   }
 }
 
-ManageLoginForm.propTypes = {
+ManageRegisterForm.propTypes = {
   actions: PropTypes.object.isRequired,
   areLoggedIn: PropTypes.bool
 };
 
-const postLogin = reduxForm({
-  form: 'LoginForm',
-})(ManageLoginForm);
+const postRegister = reduxForm({
+  form: 'RegisterForm',
+})(ManageRegisterForm);
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -97,4 +99,4 @@ function mapStateToProps(state){
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(postLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(postRegister);

@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 
 const renderField = (props) => {
 
-  const {input, label, type, id, meta:{touched, error} } = props;
+  const { input, label, type, id, isRequired, meta:{touched, error} } = props;
 
   return (
     <div className="qbox">
       <div className="question">
-        <label>{label}</label>
+        <label>{label}
+          {isRequired && <span className="is-required">*</span>}
+        </label>
       </div>
       <div className="answer">
         <props.tag {...input} placeholder={label} type={type} id={id}/>
@@ -21,6 +23,7 @@ const renderField = (props) => {
 
 renderField.propTypes = {
   tag: PropTypes.string,
+  isRequired: PropTypes.bool,
   id: PropTypes.string,
   input: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,

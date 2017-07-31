@@ -26,6 +26,7 @@
   "author": "scrum-a-holics",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "classnames": "^2.2.5",
     "jquery": "^3.2.1",
     "object-assign": "4.1.0",

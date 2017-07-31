@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import * as loginActions from '../../actions/loginActions';
+import * as userActions from '../../actions/userActions';
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router'
 
@@ -49,7 +49,7 @@ LoginButton.propTypes = {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(loginActions, dispatch)
+    actions: bindActionCreators(userActions, dispatch)
   };
 }
 

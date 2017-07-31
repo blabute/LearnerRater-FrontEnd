@@ -3,7 +3,6 @@ import { Field } from 'redux-form';
 import renderField from '../common/renderField';
 import PropTypes from 'prop-types';
 import renderStarRatingComponent from '../common/renderStarRatingComponent';
-import renderFieldMandatory from '../common/renderFieldMandatory';
 
 const ReviewForm = props => {
 
@@ -11,8 +10,8 @@ const ReviewForm = props => {
 
   return (
     <div>
-      <Field name="Username" tag="input" component={renderFieldMandatory} type="text" label="Username" id="inputUsername"/>
-      <Field name="Rating" component={renderStarRatingComponent} label="Rating" onStarClick={onStarClick} id="starRating"/>
+      <Field name="Username" tag="input" isRequired={true} component={renderField} type="text" label="Username" id="inputUsername"/>
+      <Field name="Rating" isRequired={true} component={renderStarRatingComponent} label="Rating" onStarClick={onStarClick} id="starRating"/>
       <Field name="Comment" tag="textarea" component={renderField} type="textarea" label="Comment" id="inputComment"/>
     </div>
   );

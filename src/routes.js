@@ -8,6 +8,7 @@ import ResourceSubjectsPage from './components/ResourceSubjects/ResourceSubjects
 import ManageCoursePage from './components/addCourses/ManageCoursePage';
 import ResourcePage from './components/resources/ResourcePage';
 import LoginPage from './components/login/LoginPage';
+import RegisterPage from './components/register/RegisterPage';
 
 export default (
   <Route path="/" component={App}>
@@ -17,6 +18,7 @@ export default (
     <Route path="resources" component={ResourcePage}/>
     <Route path="resources/:subject" component={ResourcePage}/>
     <Route path="login" component={LoginPage}/>
+    <Route path="register" component={RegisterPage}/>
     <Route path="*" component={NotFoundPage}/>
   </Route>
 );
