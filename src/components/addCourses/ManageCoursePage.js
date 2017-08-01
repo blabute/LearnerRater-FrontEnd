@@ -141,7 +141,8 @@ function mapStateToProps (state,ownProps){
   return {
     resourceSubjects: state.resourceSubjects,
     initialValues:{
-      Category:ownProps.subject
+      Category: ownProps.subject,
+      Username: state.login.username
     }
   };
 }

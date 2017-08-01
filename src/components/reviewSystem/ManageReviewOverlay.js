@@ -35,7 +35,7 @@ class ManageReviewOverlay extends React.Component {
       errors.Username = " Exceeded max field size";
       isError = true;
     }
-    
+
     if (!Rating){
       errors.Rating = errMsgRequired;
       isError = true;
@@ -92,10 +92,18 @@ const postNewReview = reduxForm({
   form: 'ReviewForm',
 })(ManageReviewOverlay);
 
+function mapStateToProps(state){
+  return {
+    initialValues: {
+      Username: state.login.username
+    }
+  };
+}
+
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(reviewActions, dispatch)
   };
 }
 
-export default connect(null, mapDispatchToProps)(postNewReview);
+export default connect(mapStateToProps, mapDispatchToProps)(postNewReview);

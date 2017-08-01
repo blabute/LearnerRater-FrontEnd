@@ -1,6 +1,7 @@
 import React from 'react';
 import ManageButton from './ManageButton';
 import LoginButton from '../login/LoginButton';
+import NameBadge from './NameBadge';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -17,6 +18,9 @@ const Header = props => {
           <h2>So you learned something. Now let us know what you think.</h2>
         </div>
 
+        {areLoggedIn &&
+          <NameBadge />
+        }
         <LoginButton />
         {currentPage != "/" && areLoggedIn &&
           <ManageButton />

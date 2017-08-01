@@ -21,7 +21,7 @@ function validate(values) {
     errors.Password = errMsgRequired;
     isError = true;
   } else if(Password !== ConfirmPassword){
-    errors.Password = ' testing';
+    errors.Password = ' Passwords do not match';
     isError = true;
   }
 

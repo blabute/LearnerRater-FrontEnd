@@ -6,13 +6,11 @@ class UserApi {
   static login(user) {
 
     return $.ajax({
-      type: "POST",
-      contentType: "application/json",
-      url: `${constants.REST_SERVICE_URL}Login`,
-      data: JSON.stringify(user),
+      type: "GET",
+      url: `${constants.REST_SERVICE_URL}GetUser/${user.Username}`,
     })
-    .then(() => {
-      return user;
+    .then(password => {
+      return password;
     });
   }
 
@@ -22,7 +20,7 @@ class UserApi {
       type: "POST",
       contentType: "application/json",
       url: `${constants.REST_SERVICE_URL}AddUser`,
-      data: JSON.stringify(user),
+      data: JSON.stringify(user)
     })
     .then(() => {
       return user;

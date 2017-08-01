@@ -4,8 +4,8 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import * as userActions from '../../actions/userActions';
 import RegisterForm from './RegisterForm';
-import { reduxForm, change } from 'redux-form';
-import { browserHistory, Link } from 'react-router';
+import { reduxForm } from 'redux-form';
+import { browserHistory } from 'react-router';
 import validate from './validate';
 
 class ManageRegisterForm extends React.Component {
@@ -29,8 +29,10 @@ class ManageRegisterForm extends React.Component {
 
     this.props.actions.register()
       .then(() => browserHistory.goBack())
+      .then(() => browserHistory.goBack())
         .catch(error => {
-          dispatch(change('Password', ''))
+          dispatch(change('Password', ''));
+          dispatch(change('ConfirmPassword', ''));
           this.setState({errorMessage: error.responseText});
         });
   }
@@ -94,7 +96,11 @@ function mapStateToProps(state){
   return {
     areLoggedIn: state.login.areLoggedIn,
     initialValues: {
-      Username: state.login.username
+      Username: "blabute",
+      Password: "testing",
+      ConfirmPassword: "testing",
+      Email: "blabute@appliedsystems.com",
+      FullName: "Brysen LaBute"
     }
   };
 }

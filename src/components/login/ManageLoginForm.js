@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import * as userActions from '../../actions/userActions';
 import LoginForm from './LoginForm';
-import { reduxForm, change } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { browserHistory, Link } from 'react-router';
 
 class ManageLoginForm extends React.Component {
@@ -27,8 +27,8 @@ class ManageLoginForm extends React.Component {
     this.props.actions.login()
       .then(() => browserHistory.goBack())
         .catch(error => {
-          dispatch(change('Password', ''))
-          this.setState({errorMessage: error.responseText});
+          dispatch(change('Password', ''));
+          this.setState({errorMessage: error.responseText || error.message});
         });
   }
 

@@ -53,7 +53,7 @@ class ResourceListRow extends React.Component {
 
   render() {
 
-    const { resource, index ,  canDelete} = this.props;
+    const { resource, index, canDelete, areLoggedIn } = this.props;
     const listOfRatings = resource.Reviews.map(review => review.Rating);
     const averageRating = computeAverage(listOfRatings);
 
@@ -113,8 +113,9 @@ class ResourceListRow extends React.Component {
             )}
           </div>
 
-
-          <AddReviewButton onClick={this.openAddReviewOverlay}/>
+          { areLoggedIn &&
+            <AddReviewButton onClick={this.openAddReviewOverlay}/>
+          }
 
         </div>{/* // __col-2 */}
 
@@ -138,13 +139,14 @@ ResourceListRow.propTypes = {
   animationDuration: PropTypes.number,
   actions: PropTypes.object.isRequired,
   index: PropTypes.number,
+  canDelete: PropTypes.bool,
   canDelete: PropTypes.bool
-
 };
 
 function mapStateToProps(state) {
   return {
-    canDelete: state.userInterface.canDelete
+    canDelete: state.userInterface.canDelete,
+    areLoggedIn: state.login.areLoggedIn
   };
 }
 

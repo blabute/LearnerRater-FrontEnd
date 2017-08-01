@@ -91,8 +91,8 @@ class ResourcePage extends React.Component {
       whiteSpace: 'nowrap'
 
     };
-
-    let resources = this.sortResources(this.props.resources,this.state.sortBy);
+    let resources = this.sortResources(this.props.resources, this.state.sortBy);
+    const { areLoggedIn } = this.props;
 
     return (
       <div>
@@ -113,7 +113,11 @@ class ResourcePage extends React.Component {
               {resources.length}
             </div>
           </h2>
-          <button type="button" onClick={this.openAddCourseOverlay} className="btn"><i className="fa fa-plus" id="btnAddCourse"/> ADD RESOURCE LINK</button>
+          {areLoggedIn &&
+            <button type="button" onClick={this.openAddCourseOverlay} className="btn">
+              <i className="fa fa-plus" id="btnAddCourse"/> ADD RESOURCE LINK
+            </button>
+          }
         </div>
 
 
@@ -134,13 +138,15 @@ class ResourcePage extends React.Component {
 ResourcePage.propTypes = {
   resources: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
-  params: PropTypes.object.isRequired
+  params: PropTypes.object.isRequired,
+  areLoggedIn: PropTypes.bool
 };
 
 function mapStateToProps (state, ownProps){
   const subjectName = ownProps.params.subject;
   return {
     resources: state.resources,
+    areLoggedIn: state.login.areLoggedIn,
     subject: subjectName
   };
 }
